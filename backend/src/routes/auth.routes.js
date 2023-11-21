@@ -10,7 +10,6 @@ const uploadPath =(req,res,next) => {
 }
 
 app.post('/login', authCtrl.login)
-
 app.post('/register',uploadPath,uploader.single('image'),authCtrl.register)
 app.post('/activate/:token',)
 app.post('/forget-password',)
