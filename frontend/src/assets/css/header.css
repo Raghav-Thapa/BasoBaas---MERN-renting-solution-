@@ -1,0 +1,28 @@
+.navs{
+    font-weight: bold;
+}
+
+
+.hov:hover{
+    color: #947054 !important;
+    text-decoration: underline ;
+    text-underline-offset: 15px ;
+}
+
+.nav-link.active{
+    color: #947054 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 15px !important;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #947054 !important;
+}
+
+.left{
+    margin-left: 490px;
+}
+
+.right{
+    margin-right: 10px;
+}

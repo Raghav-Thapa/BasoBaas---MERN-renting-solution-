@@ -1,0 +1,39 @@
+.topbar{
+    height: 60px;
+    background-color: #9d9ea2
+}
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5%;
+}
+.image{
+    margin-top: 10px;
+    width: 120px;
+    position: absolute;
+    z-index: 1;
+}
+.login{
+    justify-content: right;
+    display: flex;
+    font-size: 22px;
+    position: relative;
+    /* margin-right: 50px; */
+
+}
+.contactsLogo{
+    position: absolute;
+    font-size: 22px;
+    margin-top: 10px;
+    /* padding: 10px; */
+    /* margin-left: 70px; */
+}
+.marginright{
+    margin-right: 17px
+}
+
+.navbar-nav .dropdown-menu{
+    /* background-color: rgba(128, 128, 128, 0.447); */
+    cursor: pointer;
+}
