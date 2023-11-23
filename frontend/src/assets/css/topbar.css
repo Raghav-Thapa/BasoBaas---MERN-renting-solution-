@@ -37,3 +37,23 @@
     /* background-color: rgba(128, 128, 128, 0.447); */
     cursor: pointer;
 }
+
+.btnstyle{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: -40px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.btnstyle:hover{
+    color: #947054 !important;
+    /* background-color: #d5d8da; */
+}
+
+.loginoverlay{
+    width: 50vw;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    opacity: 0.93;
+}

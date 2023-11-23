@@ -26,3 +26,8 @@
 .right{
     margin-right: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    .dropdown-menu {width: 100px; margin-left: 0px;}
+}
+
