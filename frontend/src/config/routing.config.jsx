@@ -20,6 +20,7 @@ const Routing = () => {
         </Route>
 
         <Route path="/admin" element ={<AdminDashboard/>}></Route>
+        <Route path="/admin/login" element ={<Admin/>}></Route>
     </Routes>
     </BrowserRouter>
  </>)
