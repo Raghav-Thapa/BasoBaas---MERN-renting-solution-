@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import logo2 from "../assets/images/logo2.png"
 import logo2 from "../../../assets/images/logo2.png"
 import { FaUser } from "react-icons/fa";
 import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri"
 import { FaFacebook, FaTwitter } from "react-icons/fa"
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
+import { NavLink } from "react-router-dom";
 
 
 const Topbar = () => {
@@ -45,8 +45,8 @@ const Topbar = () => {
                                     </Dialog>
                                 </li>
 
-                                <li to="signup">
-                                <Button className="btnstyle" style={{marginLeft:'-33px'}} label=" Register"/> </li>
+                                <li>
+                                <NavLink to= "/register"><Button className="btnstyle" style={{marginLeft:'-33px'}} label=" Register"/> </NavLink> </li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><a className="dropdown-item" href="#!">Logout</a></li>
                             </ul>
