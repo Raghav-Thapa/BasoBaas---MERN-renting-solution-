@@ -9,14 +9,16 @@
     text-underline-offset: 15px ;
 }
 
-.nav-link.active{
+/* .active{
     color: #947054 !important;
     text-decoration: underline !important;
     text-underline-offset: 15px !important;
-}
+} */
 
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+.navbar-nav .nav-link.active{
     color: #947054 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 15px !important;
 }
 
 .left{

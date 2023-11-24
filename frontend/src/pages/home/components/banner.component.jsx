@@ -1,6 +1,5 @@
 
-import banner4 from "../assets/images/banner/banner4.gif"
-
+import banner4 from "../../../assets/images/banner/banner4.gif"
 
 
 const Banner = ()=>{

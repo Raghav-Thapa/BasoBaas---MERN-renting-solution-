@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import logo1 from "../assets/images/logo1.png"
-import logo2 from "../assets/images/logo2.png"
+// import logo2 from "../assets/images/logo2.png"
+import logo2 from "../../../assets/images/logo2.png"
 import { FaUser } from "react-icons/fa";
 import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri"
 import { FaFacebook, FaTwitter } from "react-icons/fa"
-// import Button from 'react-bootstrap/Button';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
-import CloseButton from 'react-bootstrap/CloseButton';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 
 
-export const Topbar = () => {
+const Topbar = () => {
     const [visible, setVisible] = useState(false);
     return (<>
         <div className="topbar">
@@ -63,3 +59,5 @@ export const Topbar = () => {
 
     </>)
 }
+
+export default Topbar
