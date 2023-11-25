@@ -4,6 +4,7 @@ import ErrorPage from "../pages/errors/error.page";
 import CategoryDetail from "../pages/category/category.page";
 import HomePageLayout from "../pages/layout/home.layout";
 import AdminDashboard from "../pages/admin/dashboard.page";
+import AdminLayout from "../pages/layout/admin.layout";
 
 const Routing = () => {
  return(<>
@@ -14,12 +15,12 @@ const Routing = () => {
         <Route index element ={<HomePage/>}/>
         <Route path="category/:slug" element={<CategoryDetail/>} />
         <Route path="category/:slug/:childSlug" element={<CategoryDetail />} />
-
         <Route path="*" element={<ErrorPage/>}></Route>
 
         </Route>
 
-        <Route path="/admin" element ={<AdminDashboard/>}></Route>
+        <Route path="/admin" element={<AdminLayout/>}>
+        <Route index element={<AdminDashboard />}/></Route>
     </Routes>
     </BrowserRouter>
  </>)

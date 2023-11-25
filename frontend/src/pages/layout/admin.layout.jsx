@@ -1,6 +1,27 @@
+import { Outlet } from "react-router-dom";
+import "../../assets/css/adminmodel.css"
+import { AdminFooter, AdminSidebar, AdminTopNav } from "../admin/components";
+
 const AdminLayout = () => {
-    return(<>
-    </>)
+
+    return (<>
+
+        <AdminTopNav />
+
+        <div id="layoutSidenav">
+
+            <AdminSidebar />
+
+            <div id="layoutSidenav_content" className="my-5">
+                <main>
+                    <Outlet />
+                </main>
+
+            </div>
+        </div>
+        <AdminFooter />
+    </>
+    )
 }
 
 export default AdminLayout
