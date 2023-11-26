@@ -5,6 +5,7 @@ import CategoryDetail from "../pages/category/category.page";
 import HomePageLayout from "../pages/layout/home.layout";
 import AdminDashboard from "../pages/admin/dashboard.page";
 import AdminLayout from "../pages/layout/admin.layout";
+import RegisterPage from "../pages/auth/register.page";
 
 const Routing = () => {
  return(<>
@@ -18,6 +19,11 @@ const Routing = () => {
         <Route path="*" element={<ErrorPage/>}></Route>
 
         </Route>
+
+        {/* <Route path="/login" element={<LoginPage />} /> */}
+        <Route path="/register" element={<RegisterPage/>} />
+        {/* <Route path="/forget-password" element={<ForgetPage />} />
+        <Route path="/reset-password/:token" element={<ResetPage />} /> */}
 
         <Route path="/admin" element={<AdminLayout/>}>
         <Route index element={<AdminDashboard />}/></Route>

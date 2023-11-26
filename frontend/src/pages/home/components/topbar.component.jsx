@@ -104,9 +104,10 @@ const Topbar = () => {
 
                                                 <Col lg={5} className="signupimage">
                                                     <div className="formatsignup">
-                                                    <Button variant="primary" type="submit" className="me-4 ms-2 signupbutton">
+                                                   <NavLink to="/register"><Button variant="primary" type="submit" className="me-4 ms-2 signupbutton">
                                                         <FaUserPlus className="me-3 " />Signup
                                                         </Button>
+                                                        </NavLink> 
                                                     </div>
                                                 </Col>
                                 
@@ -117,7 +118,7 @@ const Topbar = () => {
                                 </li>
 
                                 <li>
-                                    <NavLink to="/register"><Button className="btnstyle" style={{ marginLeft: '-33px' }} label=" Register" /> </NavLink> </li>
+                                    <NavLink to="register"><Button className="btnstyle" style={{ marginLeft: '-33px' }} label=" Register" /> </NavLink> </li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><a className="dropdown-item" href="#!">Logout</a></li>
                             </ul>

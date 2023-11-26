@@ -1,0 +1,13 @@
+.leftside{
+    height: 500px;
+    background-color: #f8f9fa;
+    border-radius: 10px 0px 0px 10px;
+
+}
+
+.rightside{
+    height: 500px;
+    background-color: antiquewhite;
+    border-radius: 0px 10px 10px 0px;
+
+}
