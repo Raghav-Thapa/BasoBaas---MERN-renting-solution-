@@ -13,11 +13,37 @@ import { IoMdMail } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa";
 import userimg from "../../assets/images/userimage.png"
 import { NavLink } from "react-router-dom"
+import { useFormik } from "formik"
+import * as Yup from "yup"
 
 
 
 
 const RegisterPage = () => {
+
+    const registerSchema = Yup.object({
+        name: Yup.string().min(3).required(),
+        email: Yup.string().email().required(),
+        role: Yup.string().matches(/seller|customer/).default("customer"),
+        password: Yup.string().min(8).max(30).required(),
+        confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], "Password and confirm Password does not match"),
+        image: Yup.string()
+    })
+
+    const formik = useFormik({
+        initialValues: {
+            name: null,
+            email: null,
+            role: null,
+            password: null,
+            confirmPassword: null,
+            image: null,
+        },
+        validationSchema: registerSchema,
+        onSubmit : (values) => {
+            console.log("Registration:", values)
+        },
+    })
 
     return (<>
 
@@ -31,18 +57,20 @@ const RegisterPage = () => {
                         <h3 className="login logintitle mt-3"> <SiGnuprivacyguard className="mb-2 me-2" />SIGN UP</h3>
                         <hr />
 
-                        <Form className="form-format">
+                        <Form onSubmit={formik.handleSubmit} className="form-format">
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <InputGroup className="mb-3">
                                     <InputGroup.Text id="basic-addon1">< FaUser /></InputGroup.Text>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Enter Full Name"
+                                        placeholder="Enter full name"
                                         name="text"
+                                        required
+                                        onChange={formik.handleChange}
                                     />
                                 </InputGroup>
-                                <span className="text-danger"></span>
+                                {/* <span className="text-danger">{formik.errors?.name}</span> */}
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -50,18 +78,16 @@ const RegisterPage = () => {
                                     <InputGroup.Text id="basic-addon1"><IoMdMail /></InputGroup.Text>
                                     <Form.Control
                                         type="email"
-                                        placeholder="Enter email"
+                                        placeholder="Enter your email"
                                         name="email"
-
+                                        required
+                                        onChange={formik.handleChange}
                                     />
-                                    {/* <Form.Text className="text-muted">
-                                    We'll never share your email with anyone else.
-                                </Form.Text> */}
                                     {/* <span className="text-danger">
                                     {formik.errors?.email}
                                 </span> */}
                                 </InputGroup>
-                                <span className="text-danger"></span>
+                                {/* <span className="text-danger"></span> */}
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -69,12 +95,13 @@ const RegisterPage = () => {
                                     <InputGroup.Text id="basic-addon1">< FaLock /></InputGroup.Text>
                                     <Form.Control
                                         type="password"
-                                        placeholder="Enter Password"
+                                        placeholder="Enter your password"
                                         name="password"
-
+                                        required
+                                        onChange={formik.handleChange}
                                     />
                                 </InputGroup>
-                                <span className="text-danger"></span>
+                                <span className="text-danger">{formik.errors?.password}</span>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -82,19 +109,21 @@ const RegisterPage = () => {
                                     <InputGroup.Text id="basic-addon1">< FaKey /></InputGroup.Text>
                                     <Form.Control
                                         type="password"
-                                        placeholder="Repeat Your Password"
-                                        name="password"
-
+                                        placeholder="Repeat your password"
+                                        name="confirmPassword"
+                                        required
+                                        onChange={formik.handleChange}
                                     />
                                 </InputGroup>
-                                <span className="text-danger"></span>
+                                <span className="text-danger">{formik.errors?.confirmPassword}</span>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Select
                                     name="role"
-                                    size="sm"
-                                    
+                                    size="sm" 
+                                    required  
+                                    onChange={formik.handleChange}
                                 >
                                     <option>--Select Your Role--</option>
                                     <option value={"seller"}>Owner</option>
@@ -111,25 +140,24 @@ const RegisterPage = () => {
                                     required
                                     accept="image/*"
                                     name="image"
-                                    // onChange={(e) => {
-                                    //     let file = e.target.files[0];
-                                    //     let ext = (file.name.split(".")).pop();
-                                    //     if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'].includes(ext.toLowerCase())) {
-                                    //         formik.setValues({
-                                    //             ...formik.values,
-                                    //             image: file
-                                    //         })
-                                    //     } else {
-                                    //         formik.setErrors({
-                                    //             ...formik.errors,
-                                    //             image: "File format not supported"
-                                    //         })
-                                    //     }
-                                    // }}
+                                    onChange={(e) => {
+                                        let file = e.target.files[0];
+                                        let ext = (file.name.split(".")).pop();
+                                        if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'].includes(ext.toLowerCase())) {
+                                            formik.setValues({
+                                                ...formik.values,
+                                                image: file
+                                            })
+                                        } else {
+                                            formik.setErrors({
+                                                ...formik.errors,
+                                                image: "File format not supported"
+                                            })
+                                        }
+                                    }}
                                 />
-                                <span className="text-danger"></span>
+                                {/* <span className="text-danger">{formik.errors?.image}</span> */}
                             </Form.Group>
-
 
                             <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                 <Form.Check type="checkbox" label="I agree to the Terms and Conditions" />
@@ -142,7 +170,11 @@ const RegisterPage = () => {
                 </Col>
 
                 <Col className="rightside" lg={6}>
-                    <img className="userimg" src={userimg} alt="" />
+                    <img className="userimg" src={
+                        (formik.values.image && typeof formik.values.image !=="string")
+                        ?  URL.createObjectURL(formik.values.image)
+                        : userimg
+                    } alt="" />
                 </Col>
             </Row>
         </Container>
