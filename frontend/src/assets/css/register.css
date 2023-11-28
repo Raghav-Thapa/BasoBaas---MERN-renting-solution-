@@ -5,9 +5,30 @@
 
 }
 
+.backcolor{
+    background-color: #f8f9fa;
+    height: 600px;
+}
+
 .rightside{
     height: 500px;
     background-color: antiquewhite;
+    background-image: url('../images/registerbackimg.jpg');
+    background-size: cover;
+    background-position: center;
     border-radius: 0px 10px 10px 0px;
+}
 
+.userimg{
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    border-radius: 20px;
+    background-color:#2e8dec55
+}
+.shadoww{
+    box-shadow: 30px 30px 5px rgba(173, 216, 230, 0.655);
 }

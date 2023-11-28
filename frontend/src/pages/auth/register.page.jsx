@@ -11,6 +11,8 @@ import { FaUserPlus } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa";
+import userimg from "../../assets/images/userimage.png"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -20,9 +22,10 @@ const RegisterPage = () => {
     return (<>
 
         <Header />
+        <div className="backcolor">
 
         <Container>
-            <Row className="mt-4">
+            <Row className="mt-3 shadoww">
                 <Col className="leftside" lg={6}>
                     <div className="title">
                         <h3 className="login logintitle mt-3"> <SiGnuprivacyguard className="mb-2 me-2" />SIGN UP</h3>
@@ -131,18 +134,20 @@ const RegisterPage = () => {
                             <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                 <Form.Check type="checkbox" label="I agree to the Terms and Conditions" />
                             </Form.Group>
-                            <Button variant="primary" type="submit" className="me-4 ms-2 loginbutton mt-3">
+                            <Button variant="primary" type="submit" className="me-5 ms-2 loginbutton mt-1">
                                 <FaUserPlus className="me-3 " />Sign Up
                             </Button>
-                            <a className="signup" style={{ textDecoration: "none", color: "blue" }} href="forget-password">Sign In <FaArrowRight />  </a>
                         </Form>
                     </div>
                 </Col>
 
                 <Col className="rightside" lg={6}>
+                    <img className="userimg" src={userimg} alt="" />
                 </Col>
             </Row>
         </Container>
+
+        </div>
 
 
     </>

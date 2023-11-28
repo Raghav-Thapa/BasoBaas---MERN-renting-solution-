@@ -20,7 +20,7 @@ const Routing = () => {
 
         </Route>
 
-        {/* <Route path="/login" element={<LoginPage />} /> */}
+        {/* <Route path="/login" element={} /> */}
         <Route path="/register" element={<RegisterPage/>} />
         {/* <Route path="/forget-password" element={<ForgetPage />} />
         <Route path="/reset-password/:token" element={<ResetPage />} /> */}

@@ -16,6 +16,10 @@ import signupimage from "../../../assets/images/user.png"
 
 const Topbar = () => {
     const [visible, setVisible] = useState(false);
+    let [credentials, setCredentials] = useState({
+        email: null,
+        password: null
+    });
     return (<>
         <div className="topbar">
             <div className="container">
@@ -43,7 +47,7 @@ const Topbar = () => {
                                     <Button className="btnstyle" label="Login" onClick={() => setVisible(true)} />
                                     <Dialog className="loginoverlay" draggable={false} visible={visible} onHide={() => setVisible(false)}>
                                         <Container>
-                                            <Row>
+                                            <Row className="backk">
                                                 <Col lg={6}>
                                                     <h3 className="login logintitle"> <FaCircleUser className="mb-2 me-2" />USER LOGIN</h3>
                                                     <hr className="mb-4" />
@@ -55,7 +59,8 @@ const Topbar = () => {
                                                                 <InputGroup.Text id="basic-addon1"><HiOutlineMail /></InputGroup.Text>
                                                                 <Form.Control
                                                                     type="email"
-                                                                    placeholder="Enter email"
+                                                                    required
+                                                                    placeholder="Enter your email"
                                                                     name="email"
 
                                                                 />
