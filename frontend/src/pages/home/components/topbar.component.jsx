@@ -11,7 +11,7 @@ import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi"
 import { FaCircleUser } from "react-icons/fa6"
 import { FaRegUser } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
-import signupimage from "../../../assets/images/user.png"
+// import signupimage from "../../../assets/images/user.png"
 import {useFormik} from "formik"
 import * as Yup from "yup"
 
