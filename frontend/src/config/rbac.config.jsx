@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
 import { toast } from "react-toastify"
-import { Auth } from "../pages/auth";
+// import { Auth } from "../pages/auth";
 
 const CheckPermission = ({Component, accessBy}) => {
 

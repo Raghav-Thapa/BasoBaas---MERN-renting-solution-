@@ -1,10 +1,13 @@
 const http = require('http')
 const express = require("express")
 const app = express();
+const cors = require("cors")
 const routes = require('./src/routes');
 
 const server = http.createServer(app);
 require("./src/config/mongoose.config")
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({

@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import userimage from "../../../assets/images/userimage.png"
 
 export const AdminTopNav = () => {
     const toggleSidebar = (e) => {
@@ -7,20 +8,19 @@ export const AdminTopNav = () => {
     }
     return (<>
         <nav className="sb-topnav navbar navbar-expand navbar-light bg-light fixed-top">
-            <a className="navbar-brand ps-3" href="/admin">Admin Pannel</a>
+            <NavLink className="navbar-brand ps-3" to="/admin">Admin Pannel</NavLink>
             <button onClick={toggleSidebar} className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i className="fas fa-bars"></i></button>
-            <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div className="input-group">
-                    <input className="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button className="btn btn-primary" id="btnNavbarSearch" type="button"><i className="fas fa-search"></i></button>
-                </div>
-            </form>
+            <div className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                
+            </div>
             <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw"></i></a>
+                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {/* <i className="fas fa-user fa-fw"></i> */}
+                        <img src={userimage} style={{height:'50px', width:'50px', borderRadius:'50%'}} alt="" />
+                        </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a className="dropdown-item" href="#!">Settings</a></li>
-                        <li><a className="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a className="dropdown-item" href="#!">Profile</a></li>
                         <li><hr className="dropdown-divider" /></li>
                         <li>
                             <NavLink className="dropdown-item" to="/login">Logout</NavLink>
@@ -89,16 +89,16 @@ export const AdminSidebar = () => {
 
                         <NavLink className="nav-link" to="/admin/brand">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-tag"></i>
+                                <i className="fas fa-city"></i>
                             </div>
-                            Brand Management
+                            City Management
                             {/* <div className="sb-sidenav-collapse-arrow">
                       <i className="fas fa-angle-right"></i>
                     </div> */}
                         </NavLink>
                         <NavLink className="nav-link" to="/admin/category">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-tag"></i>
+                                <i className="fas fa-layer-group"></i>
                             </div>
                             Category Management
                             {/* <div className="sb-sidenav-collapse-arrow">
@@ -108,7 +108,7 @@ export const AdminSidebar = () => {
 
                         <NavLink className="nav-link" to="/admin/user">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-tag"></i>
+                                <i className="fas fa-user"></i>
                             </div>
                             User Management
                             {/* <div className="sb-sidenav-collapse-arrow">
@@ -118,9 +118,9 @@ export const AdminSidebar = () => {
 
                         <NavLink className="nav-link" to="/admin/product">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-tag"></i>
+                                <i className="fas fa-person-shelter"></i>
                             </div>
-                            Product Management
+                            Room Management
                             {/* <div className="sb-sidenav-collapse-arrow">
                       <i className="fas fa-angle-right"></i>
                     </div> */}
@@ -130,31 +130,12 @@ export const AdminSidebar = () => {
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-tag"></i>
                             </div>
-                            Order Management
+                            Booking Management
                             {/* <div className="sb-sidenav-collapse-arrow">
                       <i className="fas fa-angle-right"></i>
                     </div> */}
                         </NavLink>
 
-                        <NavLink className="nav-link" to="/">
-                            <div className="sb-nav-link-icon">
-                                <i className="fas fa-tag"></i>
-                            </div>
-                            Transactions Management
-                            {/* <div className="sb-sidenav-collapse-arrow">
-                      <i className="fas fa-angle-right"></i>
-                    </div> */}
-                        </NavLink>
-
-                        <NavLink className="nav-link" to="/">
-                            <div className="sb-nav-link-icon">
-                                <i className="fas fa-tag"></i>
-                            </div>
-                            Review Management
-                            {/* <div className="sb-sidenav-collapse-arrow">
-                      <i className="fas fa-angle-right"></i>
-                    </div> */}
-                        </NavLink>
                     </div>
                 </div>
                 <div className="sb-sidenav-footer">

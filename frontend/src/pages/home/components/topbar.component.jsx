@@ -14,7 +14,7 @@ import { FaUserPlus } from "react-icons/fa6";
 // import signupimage from "../../../assets/images/user.png"
 import {useFormik} from "formik"
 import * as Yup from "yup"
-
+import axios from "axios"
 
 const Topbar = () => {
     const loginSchema = Yup.object({
@@ -27,8 +27,21 @@ const Topbar = () => {
             password: null
         },
         validationSchema: loginSchema,
-        onSubmit: (values) => {
-            console.log(values)
+        onSubmit: async (values) => {
+            try{
+                let response = await axios.post('http://localhost:3005/api/v1/auth/login', 
+                values,
+                {
+                    headers: {
+                        "Content-Type" :"application/json"
+                    }
+                })
+             console.log(values)
+            }catch(axiosErrorResponse){
+                console.log(axiosErrorResponse)
+            }
+
+            
         }
     })
     console.log(formik.values)

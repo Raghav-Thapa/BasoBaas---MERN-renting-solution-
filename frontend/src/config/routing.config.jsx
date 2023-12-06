@@ -7,9 +7,12 @@ import AdminDashboard from "../pages/admin/dashboard.page";
 import AdminLayout from "../pages/layout/admin.layout";
 import RegisterPage from "../pages/auth/register.page";
 import CheckPermission from "./rbac.config";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 const Routing = () => {
     return (<>
+    <ToastContainer/>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePageLayout />}>
@@ -26,7 +29,8 @@ const Routing = () => {
                 {/* <Route path="/forget-password" element={<ForgetPage />} />
         <Route path="/reset-password/:token" element={<ResetPage />} /> */}
 
-                <Route path="/admin" element={<CheckPermission accessBy={"admin"} Component={<AdminLayout />} />}>
+                {/* <Route path="/admin" element={<CheckPermission accessBy={"admin"} Component={<AdminLayout />} />}> */}
+                <Route path="/admin" element={<AdminLayout />}>
                     <Route index element={<AdminDashboard />} /></Route>
 
 
