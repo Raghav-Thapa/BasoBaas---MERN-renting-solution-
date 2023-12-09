@@ -15,8 +15,11 @@ import { FaUserPlus } from "react-icons/fa6";
 import {useFormik} from "formik"
 import * as Yup from "yup"
 import axios from "axios"
+import AuthService from "../../auth/auth.service";
 
 const Topbar = () => {
+    const authSvc = new AuthService()
+
     const loginSchema = Yup.object({
         email: Yup.string().email().required(),
         password: Yup.string().required(),
@@ -29,14 +32,9 @@ const Topbar = () => {
         validationSchema: loginSchema,
         onSubmit: async (values) => {
             try{
-                let response = await axios.post('http://localhost:3005/api/v1/auth/login', 
-                values,
-                {
-                    headers: {
-                        "Content-Type" :"application/json"
-                    }
-                })
-             console.log(values)
+                let response = await authSvc.login(values) 
+              
+             console.log(response)
             }catch(axiosErrorResponse){
                 console.log(axiosErrorResponse)
             }
@@ -44,7 +42,7 @@ const Topbar = () => {
             
         }
     })
-    console.log(formik.values)
+    // console.log(formik.values)
     const [visible, setVisible] = useState(false);
    
     return (<>

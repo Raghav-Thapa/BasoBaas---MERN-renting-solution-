@@ -9,6 +9,7 @@ import RegisterPage from "../pages/auth/register.page";
 import CheckPermission from "./rbac.config";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
+import ActivateUser from "../pages/auth/activate-user.page";
 
 const Routing = () => {
     return (<>
@@ -20,6 +21,7 @@ const Routing = () => {
                     <Route index element={<HomePage />} />
                     <Route path="category/:slug" element={<CategoryDetail />} />
                     <Route path="category/:slug/:childSlug" element={<CategoryDetail />} />
+                    <Route path="/activate/:token" element={<ActivateUser />} />
                     <Route path="*" element={<ErrorPage />}></Route>
 
                 </Route>
