@@ -11,6 +11,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 import ActivateUser from "../pages/auth/activate-user.page";
 import Topbar from "../pages/home/components/topbar.component";
+import ForgetPage from "../pages/auth/forget-password.page"
+import ResetPage from "../pages/auth/reset-password.page"
 
 const Routing = () => {
     return (<>
@@ -29,8 +31,8 @@ const Routing = () => {
 
                 <Route path="/login" element={<Topbar/>} />
                 <Route path="/register" element={<RegisterPage />} />
-                {/* <Route path="/forget-password" element={<ForgetPage />} />
-        <Route path="/reset-password/:token" element={<ResetPage />} /> */}
+                <Route path="/forget-password" element={<ForgetPage />} />
+        <Route path="/reset-password/:token" element={<ResetPage />} />
 
                 <Route path="/admin" element={<CheckPermission accessBy={"admin"} Component={<AdminLayout />} />}>
                 {/* <Route path="/admin" element={<AdminLayout />}> */}
