@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
     (response) => {
-        console.log("Success Interceptoor",response)
+        // console.log("Success Interceptoor",response)
         return response.data
     }, 
     (error) => {

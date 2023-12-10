@@ -5,7 +5,7 @@ import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri"
 import { FaFacebook, FaTwitter } from "react-icons/fa"
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Container, Form, Row, Col, InputGroup } from "react-bootstrap"
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi"
 import { FaCircleUser } from "react-icons/fa6"
@@ -14,11 +14,12 @@ import { FaUserPlus } from "react-icons/fa6";
 // import signupimage from "../../../assets/images/user.png"
 import {useFormik} from "formik"
 import * as Yup from "yup"
-import axios from "axios"
 import AuthService from "../../auth/auth.service";
+import { toast } from "react-toastify";
 
 const Topbar = () => {
     const authSvc = new AuthService()
+    const navigate = useNavigate()
 
     const loginSchema = Yup.object({
         email: Yup.string().email().required(),
@@ -33,13 +34,39 @@ const Topbar = () => {
         onSubmit: async (values) => {
             try{
                 let response = await authSvc.login(values) 
-              
-             console.log(response)
-            }catch(axiosErrorResponse){
-                console.log(axiosErrorResponse)
-            }
+                if (response.status) {
+                    //webstorage
+                    let formattedData = {
+                        id: response.result.data._id,
+                        name: response.result.data.name,
+                        email: response.result.data.email,
+                        role: response.result.data.role,
+                    }
 
-            
+                    //store
+                    //reducer event dispatch
+
+                    // dispatch(setLoggedInUser(formattedData))
+
+
+                    localStorage.setItem("accessToken", response.result.token.accessToken)
+                    localStorage.setItem("refreshToken", response.result.token.refreshToken)
+                    localStorage.setItem("user", JSON.stringify(formattedData))
+
+                    toast.success("Welcome to" + formattedData.role + " Portal !")
+                    navigate("/" + formattedData.role)
+
+                } else {
+                    toast.warning("Credentials does not match")
+                }
+
+                //webstorage,cookie,localstorage
+                // console.log(response)
+            } catch (axiosErrorResponse) {
+                // toast.error(axiosErrorResponse.data.msg)
+                console.log(axiosErrorResponse)
+                toast.error("Credentials does not match")
+            }
         }
     })
     // console.log(formik.values)
