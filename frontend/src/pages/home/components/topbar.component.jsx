@@ -21,6 +21,16 @@ const Topbar = () => {
     const authSvc = new AuthService()
     const navigate = useNavigate()
 
+    const logout = (e) => {
+        e.preventDefault()
+        localStorage.clear()
+        // localStorage.removeItem("accessToken")
+        // localStorage.removeItem("refreshToken")
+        // localStorage.removeItem("user")
+        toast.success("Thank you for using")
+        navigate("/")
+    }
+
     const loginSchema = Yup.object({
         email: Yup.string().email().required(),
         password: Yup.string().required(),
@@ -168,7 +178,9 @@ const Topbar = () => {
                                 <li>
                                     <NavLink to="register"><Button className="btnstyle" style={{ marginLeft: '-33px' }} label=" Register" /> </NavLink> </li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#!">Logout</a></li>
+                                <li>
+                                <NavLink onClick={logout} className="dropdown-item" to="/">Logout</NavLink>
+                                    </li>
                             </ul>
                         </li>
                     </ul>

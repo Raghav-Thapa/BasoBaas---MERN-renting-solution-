@@ -44,7 +44,7 @@ const ResetPage = () => {
                     toast.success(
                         "Password has been reset successfully. Please Login to continue"
                       );
-                      navigate("/login")
+                      navigate("/")
 
                       setLoading(false);
             

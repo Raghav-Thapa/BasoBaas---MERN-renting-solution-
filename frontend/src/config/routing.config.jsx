@@ -13,10 +13,12 @@ import ActivateUser from "../pages/auth/activate-user.page";
 import Topbar from "../pages/home/components/topbar.component";
 import ForgetPage from "../pages/auth/forget-password.page"
 import ResetPage from "../pages/auth/reset-password.page"
+import Banner from "../pages/admin/banner"
+import { Outlet } from "react-router-dom"
 
 const Routing = () => {
     return (<>
-    <ToastContainer/>
+        <ToastContainer />
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePageLayout />}>
@@ -29,14 +31,26 @@ const Routing = () => {
 
                 </Route>
 
-                <Route path="/login" element={<Topbar/>} />
+                <Route path="/login" element={<Topbar />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/forget-password" element={<ForgetPage />} />
-        <Route path="/reset-password/:token" element={<ResetPage />} />
+                <Route path="/reset-password/:token" element={<ResetPage />} />
 
                 <Route path="/admin" element={<CheckPermission accessBy={"admin"} Component={<AdminLayout />} />}>
-                {/* <Route path="/admin" element={<AdminLayout />}> */}
-                    <Route index element={<AdminDashboard />} /></Route>
+                    {/* <Route path="/admin" element={<AdminLayout />}> */}
+                    <Route index element={<AdminDashboard />} />
+
+                    <Route path="banner" element={<><Outlet /></>}>
+                    {/* <Route index element={<Banner.BannerListPage />} /> */}
+                    <Route path="create" element={<Banner.BannerCreateForm />} />
+                    {/* <Route path=":id" element={<Banner.BannerEditForm />} /> */}
+                    </Route>
+                    
+                
+                </Route>
+
+                
+
 
 
                 <Route path="/seller" element={<CheckPermission accessBy={"seller"} Component={<>Seller Layout</>} />}>
