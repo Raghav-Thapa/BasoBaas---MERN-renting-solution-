@@ -41,7 +41,7 @@ const Routing = () => {
                     <Route index element={<AdminDashboard />} />
 
                     <Route path="banner" element={<><Outlet /></>}>
-                    {/* <Route index element={<Banner.BannerListPage />} /> */}
+                    <Route index element={<Banner.BannerListPage />} />
                     <Route path="create" element={<Banner.BannerCreateForm />} />
                     {/* <Route path=":id" element={<Banner.BannerEditForm />} /> */}
                     </Route>

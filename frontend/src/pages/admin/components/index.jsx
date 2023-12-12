@@ -68,55 +68,24 @@ export const AdminSidebar = () => {
 
                         <div className="sb-sidenav-menu-heading">Core Features</div>
 
-                        <NavLink
-                            className="nav-link collapsed"
-                            to="#"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#banner"
-                            aria-expanded="false"
-                            aria-controls="banner"
-                        >
+                        <NavLink className="nav-link" to="/admin/banner">
                             <div className="sb-nav-link-icon">
-                                <i className="fas fa-images"></i>
+                                <i className="fas fa-city"></i>
                             </div>
                             Banner Management
-                            <div className="sb-sidenav-collapse-arrow">
-                                <i className="fas fa-angle-down"></i>
-                            </div>
                         </NavLink>
-                        <div
-                            className="collapse"
-                            id="banner"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion"
-                        >
-                            <nav className="sb-sidenav-menu-nested nav">
-                                <NavLink className="nav-link" to="/admin/banner/create">
-                                    Add Banner
-                                </NavLink>
-                                <NavLink className="nav-link" to="/admin/banner">
-                                    List Banner
-                                </NavLink>
-                            </nav>
-                        </div>
 
                         <NavLink className="nav-link" to="/admin/brand">
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-city"></i>
                             </div>
                             City Management
-                            {/* <div className="sb-sidenav-collapse-arrow">
-                      <i className="fas fa-angle-right"></i>
-                    </div> */}
                         </NavLink>
                         <NavLink className="nav-link" to="/admin/category">
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-layer-group"></i>
                             </div>
                             Category Management
-                            {/* <div className="sb-sidenav-collapse-arrow">
-                      <i className="fas fa-angle-right"></i>
-                    </div> */}
                         </NavLink>
 
                         <NavLink className="nav-link" to="/admin/user">
@@ -124,9 +93,6 @@ export const AdminSidebar = () => {
                                 <i className="fas fa-user"></i>
                             </div>
                             User Management
-                            {/* <div className="sb-sidenav-collapse-arrow">
-                      <i className="fas fa-angle-right"></i>
-                    </div> */}
                         </NavLink>
 
                         <NavLink className="nav-link" to="/admin/product">
@@ -134,9 +100,6 @@ export const AdminSidebar = () => {
                                 <i className="fas fa-person-shelter"></i>
                             </div>
                             Room Management
-                            {/* <div className="sb-sidenav-collapse-arrow">
-                      <i className="fas fa-angle-right"></i>
-                    </div> */}
                         </NavLink>
 
                         <NavLink className="nav-link" to="/admin/order-list">
@@ -144,9 +107,6 @@ export const AdminSidebar = () => {
                                 <i className="fas fa-tag"></i>
                             </div>
                             Booking Management
-                            {/* <div className="sb-sidenav-collapse-arrow">
-                      <i className="fas fa-angle-right"></i>
-                    </div> */}
                         </NavLink>
 
                     </div>

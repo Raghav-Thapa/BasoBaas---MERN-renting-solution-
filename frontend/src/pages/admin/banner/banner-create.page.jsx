@@ -145,7 +145,7 @@ const BannerCreateForm = () => {
                                         <option>--Select any one</option>
                                         <option value={'active'}>Publish</option>
                                         <option value={'inactive'}>Un-Publish</option>
-
+                                        
                                     </Form.Select>
                                     <span className="text-danger">{formik.errors?.status}</span>
                                 </Col>
