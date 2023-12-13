@@ -14,7 +14,7 @@ class RoomService {
                 attributes: Joi.array(),
                 isFeatured: Joi.bool(),
                 images: Joi.array().items(Joi.string()),
-                sellerId: Joi.string(),
+                ownerId: Joi.string(),
                 status: Joi.string().valid("active",'inactive').default("inactive")
             })
             let response = schema.validate(data);
@@ -36,7 +36,7 @@ class RoomService {
             let data = await RoomModel.find()
                 .populate("categories")
                 .populate("city")
-                .populate("sellerId")
+                .populate("ownerId")
                 .sort({_id: -1})
                 .skip(skip)
                 .limit(perPage)
@@ -78,7 +78,7 @@ class RoomService {
             let room = await RoomModel.findById(id)
                 .populate("categories")
                 .populate("city")
-                .populate("sellerId");
+                .populate("ownerId");
             if(room) {
                 return room
             } else {
@@ -109,7 +109,7 @@ class RoomService {
             let response = await RoomModel.find(filter)
                 .populate("categories")
                 .populate("city")
-                .populate("sellerId")
+                .populate("ownerId")
                     .sort({_id: -1})
                     .skip(skip)
                     .limit(paging.perPage)

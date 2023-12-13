@@ -35,11 +35,11 @@ const RoomListPage = () => {
         },
         {
             name: 'Price',
-            selector: row => "Npr. "+row.afterDiscount,
+            selector: row => "Npr. "+row.price,
         },
         {
-            name: 'Room',
-            selector: row => row.room?.name,
+            name: 'City',
+            selector: row => row.city?.name,
         },
         {
             name: 'Status',

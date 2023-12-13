@@ -107,7 +107,7 @@ export const AdminSidebar = () => {
                             User Management
                         </NavLink>
 
-                        <NavLink className="nav-link" to="/admin/product">
+                        <NavLink className="nav-link" to="/admin/room">
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-person-shelter"></i>
                             </div>

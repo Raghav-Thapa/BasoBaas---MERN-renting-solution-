@@ -73,9 +73,9 @@ const RoomEditForm = () => {
                             categories: detail.categories.map((cat) => { return {value: cat._id, label: cat.name} }),
                             price: detail.price, 
                             city: {value: detail.city._id, label: detail.city.name},
-                            discount: detail.discount, 
+                            // discount: detail.discount, 
                             isFeatured: detail.isFeatured, 
-                            sellerId: {value: detail.sellerId._id, label: detail.sellerId.name},
+                            ownerId: {value: detail.ownerId._id, label: detail.ownerId.name},
                             attributes: detail.attributes,
                             status: detail.status, 
                             images: detail.images

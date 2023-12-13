@@ -1,5 +1,5 @@
 import { Form, Col, Button, Row } from "react-bootstrap";
-import { TextAreaInput, TextInput } from "../../../components/from.components";
+import { TextAreaInput, TextInput } from "../../../components/form.components";
 import { FaPaperPlane, FaRedo, FaPlus,FaMinus } from "react-icons/fa";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -92,10 +92,10 @@ const RoomForm = ({ submitAction, detail = null }) => {
     categories: Yup.array().of(Yup.object()).nullable().default(null),
     attributes: Yup.array().of(Yup.object()).nullable().default(null),
     price: Yup.number().min(1).required(), 
-    discount: Yup.number().min(0).max(99).nullable().default(0),
+    // discount: Yup.number().min(0).max(99).nullable().default(0),
     isFeatured: Yup.boolean().default(false),
     city: Yup.object().nullable().default(null),
-    sellerId: Yup.object().nullable().default(loggedinUser?._id),
+    ownerId: Yup.object().nullable().default(loggedinUser?._id),
     images: Yup.array(),
   });
 
@@ -107,10 +107,10 @@ const RoomForm = ({ submitAction, detail = null }) => {
       categories: null,
       attributes: "",
       price: "", 
-      discount: 0,
+      // discount: 0,
       isFeatured: false,
       city: null,
-      sellerId: loggedinUser?._id,
+      ownerId: loggedinUser?._id,
       status: "inactive",
       images: [],
     },
@@ -119,7 +119,7 @@ const RoomForm = ({ submitAction, detail = null }) => {
     onSubmit: async (values) => {
       values.categories = (values.categories.map((cat) => cat.value)).join(",");
       values.city = values.city.value
-      values.sellerId = values.sellerId?.value ?? null
+      values.ownerId = values.ownerId?.value ?? null
       values.attributes = JSON.stringify(attributes);
 
       const formData = new FormData();
@@ -180,7 +180,7 @@ const RoomForm = ({ submitAction, detail = null }) => {
     
       <Form onSubmit={formik.handleSubmit}>
         <TextInput
-          label="Name"
+          label="Property Name"
           name="name"
           value={formik.values?.name}
           changeEvent={formik.handleChange}
@@ -189,7 +189,7 @@ const RoomForm = ({ submitAction, detail = null }) => {
         />
         
         <TextAreaInput 
-          label="Detail"
+          label="Property Detail"
           name="detail"
           value={formik.values?.detail}
           changeEvent={(data) => {
@@ -205,7 +205,7 @@ const RoomForm = ({ submitAction, detail = null }) => {
         />
         
         <Form.Group className="row mb-3">
-          <Form.Label className="col-sm-3">Categories: </Form.Label>
+          <Form.Label className="col-sm-3">Property Type: </Form.Label>
           <Col sm={9}>
             <Select 
               options={categories} 
@@ -233,7 +233,7 @@ const RoomForm = ({ submitAction, detail = null }) => {
           error={formik.errors?.price}
         />
 
-        <TextInput
+        {/* <TextInput
           label="Discount"
           name="discount"
           type="number"
@@ -241,7 +241,7 @@ const RoomForm = ({ submitAction, detail = null }) => {
           changeEvent={formik.handleChange}
           placeholder="Enter discount..."
           error={formik.errors?.discount}
-        />
+        /> */}
 
 
         <Form.Group className="row mb-3">
@@ -282,19 +282,19 @@ const RoomForm = ({ submitAction, detail = null }) => {
 
         
         <Form.Group className="row mb-3">
-          <Form.Label className="col-sm-3">Seller: </Form.Label>
+          <Form.Label className="col-sm-3">Owner: </Form.Label>
           <Col sm={9}>
             <Select 
               options={sellers} 
               name="sellerId"
-              value={formik.values?.sellerId}
+              value={formik.values?.ownerId}
               onChange={(selcOpt) => {
                 formik.setValues({
                   ...formik.values, 
-                  sellerId: selcOpt
+                  ownerId: selcOpt
                 })
               }} />
-            <span className="text-danger">{formik.errors?.sellerId}</span>
+            <span className="text-danger">{formik.errors?.ownerId}</span>
           </Col>
         </Form.Group>
 

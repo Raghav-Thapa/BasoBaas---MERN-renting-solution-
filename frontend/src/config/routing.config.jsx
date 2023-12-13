@@ -17,6 +17,7 @@ import Banner from "../pages/admin/banner"
 import City from "../pages/admin/city"
 import Category from "../pages/admin/category"
 import User from "../pages/admin/user"
+import Room from "../pages/admin/room"
 import { Outlet } from "react-router-dom"
 import {useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -75,6 +76,12 @@ const Routing = () => {
                         <Route index element={<User.UserListPage/>} />
                         <Route path="create" element={<User.UserCreateForm />} />
                         <Route path=":id" element={<User.UserEditForm />} />
+                    </Route>
+
+                    <Route path="room" element={<><Outlet /></>}>
+                        <Route index element={<Room.RoomListPage/>} />
+                        <Route path="create" element={<Room.RoomCreateForm />} />
+                        <Route path=":id" element={<Room.RoomEditForm />} />
                     </Route>
 
 
