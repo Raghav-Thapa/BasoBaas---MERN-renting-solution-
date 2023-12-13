@@ -14,12 +14,16 @@ import Topbar from "../pages/home/components/topbar.component";
 import ForgetPage from "../pages/auth/forget-password.page"
 import ResetPage from "../pages/auth/reset-password.page"
 import Banner from "../pages/admin/banner"
+import City from "../pages/admin/city"
 import { Outlet } from "react-router-dom"
+import { Provider } from "react-redux";
+import store from "./store";
 
 const Routing = () => {
     return (<>
-        <ToastContainer />
-        <BrowserRouter>
+        <Provider store={store}>
+            <ToastContainer />
+            <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePageLayout />}>
 
@@ -37,19 +41,24 @@ const Routing = () => {
                 <Route path="/reset-password/:token" element={<ResetPage />} />
 
                 <Route path="/admin" element={<CheckPermission accessBy={"admin"} Component={<AdminLayout />} />}>
-                    {/* <Route path="/admin" element={<AdminLayout />}> */}
                     <Route index element={<AdminDashboard />} />
 
                     <Route path="banner" element={<><Outlet /></>}>
-                    <Route index element={<Banner.BannerListPage />} />
-                    <Route path="create" element={<Banner.BannerCreateForm />} />
-                    {/* <Route path=":id" element={<Banner.BannerEditForm />} /> */}
+                        <Route index element={<Banner.BannerListPage />} />
+                        <Route path="create" element={<Banner.BannerCreateForm />} />
+                        <Route path=":id" element={<Banner.BannerEditForm />} />
                     </Route>
-                    
-                
+
+                    <Route path="city" element={<><Outlet /></>}>
+                        <Route index element={<City.CityListPage />} />
+                        <Route path="create" element={<City.CityCreateForm />} />
+                        <Route path=":id" element={<City.CityEditForm />} />
+                    </Route>
+
+
                 </Route>
 
-                
+
 
 
 
@@ -62,7 +71,8 @@ const Routing = () => {
                 </Route>
 
             </Routes>
-        </BrowserRouter>
+            </BrowserRouter>
+        </Provider>
     </>)
 }
 

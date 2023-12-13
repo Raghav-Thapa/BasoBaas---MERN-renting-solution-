@@ -1,5 +1,5 @@
 import BannerCreateForm from "./banner-create.page";
-// import BannerEditForm from "./banner-edit.page";
+import BannerEditForm from "./banner-edit.page";
 import BannerService from "./banner.service";
 import BannerListPage from "./banner-list.page";
 
@@ -8,5 +8,5 @@ export default {
     BannerCreateForm,
     bannerSvc,
     BannerListPage,
-    // BannerEditForm,
+    BannerEditForm,
 }

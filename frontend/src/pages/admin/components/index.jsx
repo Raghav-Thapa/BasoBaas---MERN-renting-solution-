@@ -1,6 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import userimage from "../../../assets/images/userimage.png"
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+
 
 export const AdminTopNav = () => {
     const toggleSidebar = (e) => {
@@ -19,6 +21,9 @@ export const AdminTopNav = () => {
         navigate("/")
     }
 
+
+
+
     return (<>
         <nav className="sb-topnav navbar navbar-expand navbar-light bg-light fixed-top">
             <NavLink className="navbar-brand ps-3" to="/admin">Admin Pannel</NavLink>
@@ -30,7 +35,9 @@ export const AdminTopNav = () => {
                 <li className="nav-item dropdown">
                     <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {/* <i className="fas fa-user fa-fw"></i> */}
+
                         <img src={userimage} style={{height:'50px', width:'50px', borderRadius:'50%'}} alt="" />
+                        
                         </NavLink>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><NavLink className="dropdown-item" to="#!">Profile</NavLink></li>
@@ -47,6 +54,11 @@ export const AdminTopNav = () => {
 }
 
 export const AdminSidebar = () => {
+
+    let loggedinUser = useSelector((root) => {
+        console.log(root)
+        return root.User.loggedInUser
+      })
 
     return (<>
 
@@ -75,7 +87,7 @@ export const AdminSidebar = () => {
                             Banner Management
                         </NavLink>
 
-                        <NavLink className="nav-link" to="/admin/brand">
+                        <NavLink className="nav-link" to="/admin/city">
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-city"></i>
                             </div>
@@ -112,7 +124,8 @@ export const AdminSidebar = () => {
                     </div>
                 </div>
                 <div className="sb-sidenav-footer">
-                    <div className="small">Logged in as:  Admin</div>
+                    <div className="small">Logged in as: </div>
+                    {loggedinUser?.name}
 
                 </div>
             </nav>
