@@ -16,6 +16,7 @@ import ResetPage from "../pages/auth/reset-password.page"
 import Banner from "../pages/admin/banner"
 import City from "../pages/admin/city"
 import Category from "../pages/admin/category"
+import User from "../pages/admin/user"
 import { Outlet } from "react-router-dom"
 import {useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -68,6 +69,12 @@ const Routing = () => {
                         <Route index element={<Category.CategoryListPage/>} />
                         <Route path="create" element={<Category.CategoryCreateForm />} />
                         <Route path=":id" element={<Category.CategoryEditForm />} />
+                    </Route>
+
+                    <Route path="user" element={<><Outlet /></>}>
+                        <Route index element={<User.UserListPage/>} />
+                        <Route path="create" element={<User.UserCreateForm />} />
+                        <Route path=":id" element={<User.UserEditForm />} />
                     </Route>
 
 
