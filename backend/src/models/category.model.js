@@ -18,7 +18,7 @@ const CategorySchema = new mongoose.Schema({
         require: true,
         unique: true
     },
-    city:[{
+    citys:[{
         type: mongoose.Types.ObjectId,
         ref:"City",
         default: null

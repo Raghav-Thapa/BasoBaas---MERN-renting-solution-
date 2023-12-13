@@ -51,6 +51,7 @@ const Topbar = () => {
                         name: response.result.data.name,
                         email: response.result.data.email,
                         role: response.result.data.role,
+                        
                     }
 
                     //store

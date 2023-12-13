@@ -15,13 +15,22 @@ import ForgetPage from "../pages/auth/forget-password.page"
 import ResetPage from "../pages/auth/reset-password.page"
 import Banner from "../pages/admin/banner"
 import City from "../pages/admin/city"
+import Category from "../pages/admin/category"
 import { Outlet } from "react-router-dom"
-import { Provider } from "react-redux";
-import store from "./store";
+import {useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getLoggedInUser } from "../reducer/user.reducer"
+
 
 const Routing = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getLoggedInUser());
+        // dispatch(setItemInTheCart());
+
+    }, [])
     return (<>
-        <Provider store={store}>
             <ToastContainer />
             <BrowserRouter>
             <Routes>
@@ -55,6 +64,12 @@ const Routing = () => {
                         <Route path=":id" element={<City.CityEditForm />} />
                     </Route>
 
+                    <Route path="category" element={<><Outlet /></>}>
+                        <Route index element={<Category.CategoryListPage/>} />
+                        <Route path="create" element={<Category.CategoryCreateForm />} />
+                        <Route path=":id" element={<Category.CategoryEditForm />} />
+                    </Route>
+
 
                 </Route>
 
@@ -72,7 +87,6 @@ const Routing = () => {
 
             </Routes>
             </BrowserRouter>
-        </Provider>
     </>)
 }
 

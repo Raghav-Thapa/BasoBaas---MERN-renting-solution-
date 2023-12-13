@@ -9,8 +9,8 @@ class RoomService {
                 categories: Joi.string(),
                 detail: Joi.string(),
                 price: Joi.number().min(1).required(),
-                discount: Joi.number().min(0).max(99),
-                brand: Joi.string(),
+                // discount: Joi.number().min(0).max(99),
+                city: Joi.string(),
                 attributes: Joi.array(),
                 isFeatured: Joi.bool(),
                 images: Joi.array().items(Joi.string()),
@@ -35,7 +35,7 @@ class RoomService {
             
             let data = await RoomModel.find()
                 .populate("categories")
-                .populate("brand")
+                .populate("city")
                 .populate("sellerId")
                 .sort({_id: -1})
                 .skip(skip)
@@ -77,7 +77,7 @@ class RoomService {
         try {
             let room = await RoomModel.findById(id)
                 .populate("categories")
-                .populate("brand")
+                .populate("city")
                 .populate("sellerId");
             if(room) {
                 return room
@@ -108,7 +108,7 @@ class RoomService {
             let skip = (paging.currentPage-1) * paging.perPage;
             let response = await RoomModel.find(filter)
                 .populate("categories")
-                .populate("brand")
+                .populate("city")
                 .populate("sellerId")
                     .sort({_id: -1})
                     .skip(skip)

@@ -117,80 +117,80 @@ class RoomController {
       next(exception);
     }
   };
-    getRoomById = async(req, res, next) => {
-  try {
-    let room = await this._svc.getRoomById(req.params.id)
+  getRoomById = async (req, res, next) => {
+    try {
+      let room = await this._svc.getRoomById(req.params.id)
 
-    res.json({
-      result: room,
-      msg: "Room fetched successfully",
-      status: true,
-      meta: null
-    })
-  } catch (except) {
-    next(except)
+      res.json({
+        result: room,
+        msg: "Room fetched successfully",
+        status: true,
+        meta: null
+      })
+    } catch (except) {
+      next(except)
+    }
   }
-}
 
-getRoomBySlug = async (req, res, next) => {
-  try {
-    let room = await this._svc.getRoomByFilter(
-      {
-        slug: req.params.slug,
-      },
-      {
-        perPage: 1,
-        currentPage: 1,
+  getRoomBySlug = async (req, res, next) => {
+    try {
+      let room = await this._svc.getRoomByFilter(
+        {
+          slug: req.params.slug,
+        },
+        {
+          perPage: 1,
+          currentPage: 1,
+        }
+      );
+
+      res.json({
+        result: room[0],
+        msg: "Room fetched successfully",
+        status: true,
+        meta: null,
+      });
+    } catch (except) {
+      next(except);
+    }
+  };
+
+  deleteRoom = async (req, res, next) => {
+    try {
+      let room = await this._svc.getRoomById(req.params.id)
+      let del = await this._svc.deleteRoomById(req.params.id);
+      res.json({
+        result: del,
+        msg: "Room deleted successfully",
+        status: true,
+        meta: null
+      })
+    } catch (except) {
+      next(except)
+    }
+  }
+
+  getRoomForHomePage = async (req, res, next) => {
+    try {
+      let filter = {
+        status: "active",
       }
-    );
+      let paging = {
+        totalNoOfRows: await this._svc.getAllCount(filter),
+        perPage: req.query.perPage ? Number(req.query.perPage) : 100,
+        currentPage: req.query.page ? Number(req.query.page) : 1
+      }
 
-    res.json({
-      result: room[0],
-      msg: "Room fetched successfully",
-      status: true,
-      meta: null,
-    });
-  } catch (except) {
-    next(except);
-  }
-};
-
-deleteRoom = async (req, res, next) => {
-  try {
-    let room = await this._svc.getRoomById(req.params.id)
-    let del = await this._svc.deleteRoomById(req.params.id);
-    res.json({
-      result: del,
-      msg: "Room deleted successfully",
-      status: true,
-      meta: null
-    })
-  } catch (except) {
-    next(except)
-  }
-}
-
-getRoomForHomePage = async (req, res, next) => {
-  try {
-    let filter = {
-      status: "active",
+      let data = await this._svc.getRoomByFilter(filter, paging);
+      res.json({
+        result: data,
+        msg: "Room Data",
+        status: true,
+        meta: paging
+      })
+    } catch (except) {
+      next(except)
     }
-    let paging = {
-      totalNoOfRows: await this._svc.getAllCount(filter),
-      perPage: req.query.perPage ? Number(req.query.perPage) : 100,
-      currentPage: req.query.page ? Number(req.query.page) : 1
-    }
-
-    let data = await this._svc.getRoomByFilter(filter, paging);
-    res.json({
-      result: data,
-      msg: "Room Data",
-      status: true,
-      meta: paging
-    })
-  } catch (except) {
-    next(except)
   }
-}
 }
 module.exports = RoomController;

@@ -126,6 +126,11 @@ export const AdminSidebar = () => {
                 <div className="sb-sidenav-footer">
                     <div className="small">Logged in as: </div>
                     {loggedinUser?.name}
+                    {/* {loggedinUser && (
+                        <img src={loggedinUser.image} style={{ height: '50px', width: '50px', borderRadius: '50%' }} alt="" />
+                    )} */}
+
+                    
 
                 </div>
             </nav>

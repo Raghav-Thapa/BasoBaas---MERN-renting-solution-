@@ -21,16 +21,16 @@ const RoomSchema = new mongoose.Schema({
         require: null,
         min: 1 
     },
-    discount:{
-        type: Number,
-        min: 0,
-        max: 99
-    },
-    afterDiscount:{
-        type: Number,
-        require: true,
-        min: 1
-    },
+    // discount:{
+    //     type: Number,
+    //     min: 0,
+    //     max: 99
+    // },
+    // afterDiscount:{
+    //     type: Number,
+    //     require: true,
+    //     min: 1
+    // },
     city:{
         type: mongoose.Types.ObjectId,
         ref:"City",
