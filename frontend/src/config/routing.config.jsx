@@ -37,7 +37,6 @@ const Routing = () => {
             <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePageLayout />}>
-
                     <Route index element={<HomePage />} />
                     <Route path="category/:slug" element={<CategoryDetail />} />
                     <Route path="category/:slug/:childSlug" element={<CategoryDetail />} />

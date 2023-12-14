@@ -20,11 +20,11 @@ axiosInstance.interceptors.response.use(
              // redirect user to login Screen 
             // refresh token 
             
-            // localStorage.removeItem("accessToken")
-            // localStorage.removeItem("refreshToken")
-            // localStorage.removeItem("user")
+            localStorage.removeItem("accessToken")
+            localStorage.removeItem("refreshToken")
+            localStorage.removeItem("user")
             toast.warning("Please login first")
-            window.location.href = "/login"
+            // window.location.href = "/login"
         } else if (error.response.status === 403){
             // access denied 
             toast.warning("You do not have previlege to access this panel")

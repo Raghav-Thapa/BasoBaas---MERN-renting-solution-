@@ -16,10 +16,10 @@ app.use(express.urlencoded({
 
 app.use("/api/v1", routes)
 
+app.use("/assets/", express.static(process.cwd()+"/public/"));
 
-// app.use((req, res, next) => {
 
-// })
+
 
 app.use((error, req, res, next) => {
     let status = error && error.status ? error.status : 500;

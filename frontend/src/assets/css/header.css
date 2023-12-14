@@ -2,6 +2,9 @@
     font-weight: bold;
 }
 
+.dropdown-item.active, .dropdown-item:active{
+    background-color: #d2c7c0 !important;
+}
 
 .hov:hover{
     color: #947054 !important;
