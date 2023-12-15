@@ -34,7 +34,7 @@ const CategoryListPage = () => {
             sortable: true
         },
         {
-            name: "Brands",
+            name: "Cities",
             selector: row => (row.citys ? (row.citys.map((city)=> city.name)).join(", ") : "-"),
             sortable: true
         },

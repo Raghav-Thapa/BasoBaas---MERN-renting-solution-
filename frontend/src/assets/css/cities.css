@@ -2,7 +2,6 @@
 
 .marginn{
     margin-top: 35px;
-    justify-content: center;
 }
 
 .ktmcol:hover .rowKathmanduImage{
@@ -48,7 +47,6 @@
 
 .bhaktapurText{
     position: absolute;
-    margin-left: 1200px;
     margin-top: 100px !important;
     color: whitesmoke;
     font-size: 50px;
@@ -58,11 +56,11 @@
     z-index: 1;
     padding: 10px;
     cursor: pointer;
+    width: fit-content !important;
 }
 
 .lalitpurText{
     position: absolute;
-    margin-left: 1200px;
     margin-top: 100px !important;
     color: whitesmoke;
     font-size: 50px;
@@ -72,6 +70,7 @@
     z-index: 1;
     padding: 10px;
     cursor: pointer;
+    width: fit-content !important;
 }
 
 .rowBhaktapur{
@@ -90,11 +89,6 @@
     cursor: pointer;
 }
 
-/* .rowBhaktapurImage:hover{
-    cursor: pointer;
-    opacity: 1;
-    transform: scale(1.02);
-} */
 
 
 .rowLalitpur{

@@ -1,0 +1,10 @@
+.cardcover{
+    margin-Right: 30px;
+    transition: transform .3s;
+}
+
+.cardcover:hover{
+    transform: scale(1.07);
+    transition: transform .3s;
+    opacity: 0.67;
+}
