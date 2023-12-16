@@ -3,6 +3,7 @@
 
 .cardcoverr{
     margin-Right: 20px;
+    /* width: max-content; */
 }
 
 .cardcoverr:hover{
@@ -33,3 +34,15 @@
      color: #947054;
 }
 
+.viewmore{
+    background-color: rgb(241, 236, 236) !important;
+}
+
+.citybadge{
+    color: rgba(0, 123, 255, 0.473);
+}
+
+.categorybadge{
+    background-color: #94705489 !important;
+    color: white !important;
+}

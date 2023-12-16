@@ -5,7 +5,7 @@ import bhaktapur from "../../../assets/images/bhaktapur.jpg"
 import "../../../assets/css/cities.css"
 import { NavLink } from "react-router-dom"
 
-const CityPage = () => {
+const CityPage = ({city}) => {
 
     return(<>
 

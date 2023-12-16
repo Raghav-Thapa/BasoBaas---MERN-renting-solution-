@@ -22,6 +22,7 @@ import { Outlet } from "react-router-dom"
 import {useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getLoggedInUser } from "../reducer/user.reducer"
+import CityDetail from "../pages/city/city.page";
 
 
 const Routing = () => {
@@ -38,8 +39,13 @@ const Routing = () => {
             <Routes>
                 <Route path="/" element={<HomePageLayout />}>
                     <Route index element={<HomePage />} />
+
                     <Route path="category/:slug" element={<CategoryDetail />} />
                     <Route path="category/:slug/:childSlug" element={<CategoryDetail />} />
+
+                    <Route path="city/:slug" element={<CityDetail/>} />
+                    <Route path="city/:slug/:childSlug" element={<CityDetail />} />
+
                     <Route path="/activate/:token" element={<ActivateUser />} />
                     <Route path="*" element={<ErrorPage />}></Route>
 

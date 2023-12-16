@@ -3,22 +3,22 @@ import { Container, Row, Image, Col,Card } from "react-bootstrap";
 // import bgimage from "../../assets/images/header-bg.jpeg"
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import category from "../admin/category/index";
+import city from "../admin/city/index";
 import RoomList from "../home/components/room-list.component";
 import { NavLink } from "react-router-dom";
 
-const CategoryDetail = () => {
+const CityDetail = () => {
     let params = useParams();
-    const [catDetail, setCatDetail] = useState();
+    const [citysDetail, setCityDetail] = useState();
     const [roomDetail, setRoomDetail] = useState();
     const [loading, setLoading] = useState(true);
 
-    const loadCategoryDetail = useCallback(async() => {
+    const loadCityDetail = useCallback(async() => {
         try{
 
-            let response = await category.categorySvc.getDetailCategory(params.slug);
+            let response = await city.citySvc.getDetailCity(params.slug);
             // console.log(response)
-            setCatDetail(response.data.categoryDetail)
+            setCityDetail(response.data.cityDetail)
             setRoomDetail(response.data.roomList)
         }  catch(exception) {
             toast.warn("Error during Category fetch...")
@@ -28,7 +28,7 @@ const CategoryDetail = () => {
         }
     }, [params])
     useEffect(() => {
-        loadCategoryDetail()
+        loadCityDetail()
     }, [params])
 
     // console.log(setRoomDetail)
@@ -46,7 +46,7 @@ const CategoryDetail = () => {
                     loading ? <>Loading....</> : <>
                         <Row>
                             <Col>
-                               
+                                
                             </Col>
                         </Row>
                         
@@ -113,4 +113,4 @@ const CategoryDetail = () => {
     )
 }
 
-export default CategoryDetail
+export default CityDetail

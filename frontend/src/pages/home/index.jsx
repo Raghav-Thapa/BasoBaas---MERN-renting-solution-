@@ -95,7 +95,6 @@ const HomePage = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
 
-
     };
 
 
@@ -130,7 +129,7 @@ const HomePage = () => {
         <>
         <Container fluid className="my-5 bg-light">
                 <Row className="p-3">
-                    <Col><h4 style={{ color: "#bf9959" }} className="text-center titlee">JUST FOR YOU</h4></Col>
+                    <Col><h4 style={{ color: "#bf9959" }} className="text-center titlee">PROPERTIES FOR EVERYONE</h4></Col>
                 </Row>
 
                 <Row className="my-3 bg-light">

@@ -1,0 +1,33 @@
+.backimage{
+    background-image: url(../images/footer.jpg);
+    background-repeat: no-repeat;
+    background-size:auto;
+    opacity: 0.91;
+}
+
+.logoimage{
+    margin-left: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    opacity: 0.67;
+}
+
+.textt{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    opacity: 0.67;
+}
+
+.texttt{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    opacity: 0.67;
+}
+
+.map{
+    border-radius: 10px;
+    opacity: 0.67;
+    /* color: rgba(0, 0, 0, 0.265); */
+}
+
