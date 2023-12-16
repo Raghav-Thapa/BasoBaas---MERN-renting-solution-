@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maps&display=swap');
+
 .cardcover{
     margin-Right: 30px;
     transition: transform .3s;
@@ -7,4 +9,12 @@
     transform: scale(1.07);
     transition: transform .3s;
     opacity: 0.67;
+}
+
+
+.categoryText{
+    font-family: "Rubik Maps";
+}
+a{
+    text-decoration: none !important;
 }

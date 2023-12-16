@@ -7,8 +7,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import category from "../admin/category"
 import city from "../admin/city";
+import room from "../admin/room"
 import { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import RoomList from "./components/room-list.component";
+import "../../assets/css/room.css"
 
 
 export const NextArrow = (props) => {
@@ -48,11 +51,11 @@ const HomePage = () => {
 
     
 
-    const [productList, setProductList] = useState();
+    const [roomList, setRoomList] = useState();
 
-    const loadProducts = useCallback(async() => {
-        let response = await product.productSvc.listHomeProducts(24, 1)
-        setProductList(response.result)
+    const loadRooms = useCallback(async() => {
+        let response = await room.roomSvc.listHomeRooms(24, 1)
+        setRoomList(response.result)
       }, [])
 
     const [cityList, setCityList] = useState();
@@ -62,11 +65,10 @@ const HomePage = () => {
         setCityList(response.result)
       }, [])
 
-    //   console.log(cityList)
 
     useEffect(() => {
         loadCategories()
-        loadProducts()
+        loadRooms()
         loadCitys()
     }, [])
 
@@ -83,6 +85,20 @@ const HomePage = () => {
 
     };
 
+    const roomSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        arrows: true,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+
+
+    };
+
+
 
     return(<>
     <Banner/>
@@ -91,7 +107,7 @@ const HomePage = () => {
         <>
         <Container fluid className="my-5 bg-light">
                 <Row className="p-3">
-                    <Col><h4 style={{ color: "#bf9959", fontSize:'35px' }} className="text-center">FIND YOUR SPACE</h4></Col>
+                    <Col><h4 style={{ color: "#bf9959" }} className="text-center titlee">FIND YOUR SPACE</h4></Col>
                 </Row>
 
                 <Row className="my-3 bg-light">
@@ -109,6 +125,31 @@ const HomePage = () => {
                     </div>
                 </Row>
             </Container>
+        </>
+
+        <>
+        <Container fluid className="my-5 bg-light">
+                <Row className="p-3">
+                    <Col><h4 style={{ color: "#bf9959" }} className="text-center titlee">JUST FOR YOU</h4></Col>
+                </Row>
+
+                <Row className="my-3 bg-light">
+                    <div style={{ padding: "40px" }} >
+                        <Slider {...roomSettings}>
+
+                            {
+                               roomList && roomList.map((room, index) => (
+                                <RoomList 
+                                  key={index}
+                                  room={room}
+                                />
+                                ))
+                            }
+                        </Slider>
+                    </div>
+                </Row>
+            </Container>
+
         </>
     </>)
 }

@@ -36,7 +36,7 @@ class RoomController {
           return item.filename;
         });
       }
-
+ console.log(data)
       if (typeof data.attributes === "string") {
         data.attributes = JSON.parse(data.attributes);
       }

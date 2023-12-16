@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maps&display=swap');
+
+.cardcoverr{
+    margin-Right: 20px;
+}
+
+.cardcoverr:hover{
+
+    opacity: 0.67;
+    cursor: pointer;
+}
+
+.bhov{
+    transition: transform .2s;
+}
+.bhov:hover{
+    transform: scale(1.07);
+    transition: transform .2s;
+}
+
+.titlee{
+    font-family: "Rubik Doodle Shadow";
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.roomText{
+    font-family:'Times New Roman', Times, serif;
+    text-Overflow: ellipsis;
+    white-Space: nowrap;
+     overflow: hidden;
+     color: #947054;
+}
+

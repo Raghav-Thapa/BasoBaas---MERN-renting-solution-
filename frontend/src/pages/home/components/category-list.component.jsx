@@ -16,7 +16,6 @@ const CategoryList = ({category}) => {
         // nextArrow: <NextArrow />,
         // prevArrow: <PrevArrow />,
 
-
     };
     return (<>
 
@@ -28,7 +27,7 @@ const CategoryList = ({category}) => {
                 <NavLink to={`/category/${category.slug}`}>
                     <Card.Img variant="top" src={import.meta.env.VITE_IMAGE_URL+"/categorys/"+category.image} />
                     <Card.Body>
-                        <Card.Title style={{textDecoration:"none", color:"black"}} className="text-center">
+                        <Card.Title style={{color:"#947054"}} className="text-center categoryText">
                             {category.name}</Card.Title>
                     </Card.Body>
                 </NavLink>
