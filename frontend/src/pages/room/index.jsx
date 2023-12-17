@@ -5,6 +5,7 @@ import room from "../admin/room";
 import { Col, Container, Row, Carousel, Badge, Form, Button  } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import "../../assets/css/room.css"
 // import { setCart, setCartAPI } from "../../reducer/room.reducer";
 
 const RoomDetail = () => {
@@ -13,7 +14,7 @@ const RoomDetail = () => {
     let [loading, setLoading] = useState(true);
     let [detail, setDetail] = useState();
 
-    let [qty, setQty] = useState(0);
+    // let [qty, setQty] = useState(0);
 
     const loadRoomDetail = useCallback(async() => {
         try {
@@ -35,27 +36,27 @@ const RoomDetail = () => {
 
     const dispatch = useDispatch();
 
-    // const addToCart = (e) => {
-    //     e.preventDefault();
-    //     if(!loggedInuser){
-    //         localStorage.setItem("redirect", '/room/'+detail.slug)
-    //         toast.warn("Login first to create Cart")
-    //         navigate("/login")
-    //     }
-    //     console.log(loggedInuser)
+    const addToBooking = (e) => {
+        e.preventDefault();
+        if(!loggedInuser){
+            localStorage.setItem("redirect", '/room/'+detail.slug)
+            toast.warn("Login first to stark booking")
+            navigate("/login")
+        }
+        console.log(loggedInuser)
 
-    //     let currentItem = {
-    //         roomId: detail._id,
-    //         qty: Number(qty)
-    //     }
+        let currentItem = {
+            roomId: detail._id,
+            // qty: Number(qty)
+        }
 
-    //     dispatch(setCart(currentItem))
+        // dispatch(setBooking(currentItem))
 
-    //     dispatch(setCartAPI(currentItem))
+        // dispatch(setBookingAPI(currentItem))
 
-    //     toast.success("Your room has been added in the cart.")
+        toast.success("Your room has been added in the cart.")
 
-    // }
+    }
     return (<>
         <Container className="my-5 bg-light">
             {
@@ -74,31 +75,30 @@ const RoomDetail = () => {
                             </Carousel>
                         </Col>
                         <Col sm={12} md={8}>
-                            <h4>{detail.name}</h4>
+                            <h4 className="roomText">{detail.name}</h4>
                             <p>
-                                <NavLink to="/city/apple" className={"me-3"}>
-                                    <Badge bg="info">{detail.city.name}</Badge>
-                                </NavLink>
+                                <NavLink to={`/city/${detail.city.slug}`} className={"me-3 citybadge bhov"}>
+                                <i class="fa-solid fa-location-dot"></i> {detail.city.name}
+                                </NavLink><br/>
 
                                 {
                                     detail.categories && detail.categories.map((cat) => (
                                         
-                                        <NavLink key={cat._id} to={`/category/${cat.slug}`} className={"me-3"}>
-                                            <Badge bg="warning">{cat.name}</Badge>
+                                        <NavLink key={cat._id} to={`/category/${cat.slug}`} className={"me-3 mt-3 btn btn-sm categorybadge bhov"}>
+                                           {cat.name}
                                         </NavLink>
                                         
                                     ))
                                 }
                             </p>
                             <p>
-                                <span>NPR. {detail.price}</span>
+                                <span style={{fontWeight:'bold'}}>NPR. {detail.price}</span>
                                 {
                                     detail.discount && detail.discount > 0 ?  <del className="mx-3 text-danger">Npr. {detail.price}</del> : ""
                                 }
                             </p>
-                            ....
                             <Row>
-                                <Col sm="6">
+                                {/* <Col sm="6">
                                     <Form.Control
                                         type="number"
                                         name="qty"
@@ -109,18 +109,18 @@ const RoomDetail = () => {
                                         size="sm"
                                         placeholder="Enter your quantity"
                                     ></Form.Control>
-                                </Col>
+                                </Col> */}
                                 <Col sm={6}>
-                                    <Button variant="warning" className="text-white" size="sm">
-                                        <FaPlus /> &nbsp;
-                                        Add to Cart
+                                    <Button variant="success" className="text-white" size="sm" onClick={addToBooking}>
+                                        
+                                        Book Now &nbsp; <i class="fa-solid fa-angles-right fa-beat-fade"></i>
                                     </Button>
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm={12} dangerouslySetInnerHTML={{__html: detail.detail}}></Col>
+                        <Col className="mt-4" sm={12} dangerouslySetInnerHTML={{__html: detail.detail}}></Col>
                     </Row>
                 </>
             }

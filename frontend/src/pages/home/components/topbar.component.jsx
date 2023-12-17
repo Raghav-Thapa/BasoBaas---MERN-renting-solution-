@@ -211,6 +211,12 @@ const Topbar = () => {
                                     )}
                                
                                 <li><hr className="dropdown-divider" /></li>
+
+                                {isLoggedIn() && (
+                                        <Button className="btnstyle"  style={{ marginLeft: '-13px' }} label="My Bookings" /> 
+                                    )}
+                               
+                                <li><hr className="dropdown-divider" /></li>
                                             
                                 <li>
                                     {isLoggedIn() && (
@@ -219,13 +225,6 @@ const Topbar = () => {
                                 
                                     </li>
 
-                                {/* <li>
-                                    {isLoggedIn() && (
-                                        <NavLink className="dropdown-item" to="/">
-                                            View Profile
-                                        </NavLink>
-                                    )}
-                                </li> */}
                             </ul>
                         </li>
                     </ul>

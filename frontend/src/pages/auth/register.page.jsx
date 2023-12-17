@@ -58,7 +58,7 @@ const RegisterPage = () => {
 
                 let response = await authSvc.register(formData);
                 if (response.status) {
-                    toast.success("Your account has been registered. Check email for activation!")
+                    toast.success("Your account has been registered. Please login to continue")
                     setLoading(false)
                     navigate("/")
                 }
