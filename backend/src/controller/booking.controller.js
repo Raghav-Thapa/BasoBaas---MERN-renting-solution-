@@ -7,25 +7,25 @@ const BookingModel = require("../models/booking.model");
 
 class BookingController {
   constructor() {
-    this.prodSvc = new RoomService();
+    this.bookSvc = new RoomService();
     this.svc = new BookingService();
   }
   addToBooking = async (req, res, next) => {
     try {
       let payload = req.body;
 
-      let prodDetail = await this.prodSvc.getRoomById(payload.roomId);
-      let subtotal = prodDetail.afterDiscount * payload.qty;
-      let discount = payload.discount ?? 0;
-      console.log(prodDetail);
+      let bookDetail = await this.bookSvc.getRoomById(payload.roomId);
+      // let subtotal = bookDetail.afterDiscount * payload.qty;
+      // let discount = payload.discount ?? 0;
+      console.log(bookDetail);
       let bookingobj = {
         buyer: req.authUser._id,
         room: payload.roomId,
         // qty: payload.qty,
-        price: prodDetail.afterDiscount,
-        subTotal: subtotal,
-        discount: discount ?? 0,
-        total: subtotal - discount,
+        price: bookDetail.price,
+        // subTotal: subtotal,
+        // discount: discount ?? 0,
+        // total: subtotal - discount,
         status: "pending",
       };
       let response = await this.svc.addToBooking(bookingobj);
@@ -43,7 +43,7 @@ class BookingController {
     try {
       let booking = req.body;
       let roomIds = booking.map((item) => item.roomId);
-      let roomList = await this.prodSvc.getRoomByFilter(
+      let roomList = await this.bookSvc.getRoomByFilter(
         {
           _id: { $in: roomIds },
         },
@@ -54,21 +54,21 @@ class BookingController {
       );
       console.log(roomList);
       let bookingDetail = [];
-      roomList.map((prod) => {
+      roomList.map((book) => {
         let singleItem = {
-          roomId: prod._id,
-          roomName: prod.name,
-          roomImage: prod.images[0],
-          price: prod.afterDiscount,
+          roomId: book._id,
+          roomName: book.name,
+          roomImage: book.images[0],
+          price: book.price,
           qty: "",
           amount: "",
         };
         let qty = 0;
         let amt = 0;
         booking.map((bookingItem) => {
-          if (prod._id.equals(bookingItem.roomId)) {
+          if (book._id.equals(bookingItem.roomId)) {
             qty = bookingItem.qty;
-            amt = bookingItem.qty * prod.afterDiscount;
+            amt = bookingItem.qty * book.afterDiscount;
           }
         });
         singleItem.qty = qty;
@@ -90,7 +90,7 @@ class BookingController {
     try {
       let booking = req.body;
       let roomIds = booking.map((item) => item.roomId);
-      let roomList = await this.prodSvc.getRoomByFilter(
+      let roomList = await this.bookSvc.getRoomByFilter(
         {
           _id: { $in: roomIds },
         },
@@ -101,18 +101,18 @@ class BookingController {
       );
       let bookingDetail = [];
       let subTotal = 0;
-      roomList.map((prod) => {
+      roomList.map((book) => {
         let singleItem = {
-          room: prod._id,
-          price: prod.afterDiscount,
+          room: book._id,
+          price: book.afterDiscount,
           qty: "",
         };
         let qty = 0;
         let amt = 0;
         booking.map((bookingItem) => {
-          if (prod._id.equals(bookingItem.roomId)) {
+          if (book._id.equals(bookingItem.roomId)) {
             qty = bookingItem.qty;
-            amt = bookingItem.qty * prod.afterDiscount;
+            amt = bookingItem.qty * book.afterDiscount;
           }
         });
         singleItem.qty = qty;

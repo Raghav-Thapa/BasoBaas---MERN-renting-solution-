@@ -21,12 +21,12 @@ const BookingSchema = new mongoose.Schema(
       required: true,
     },
 
-    subTotal: {
-      type: Number,
-      required: true,
-    },
-    discount: Number,
-    total: Number,
+    // subTotal: {
+    //   type: Number,
+    //   required: true,
+    // },
+    // discount: Number,
+    // total: Number,
     status: {
       type: String,
       enum: ["pending", "paid", "cancelled", "verified"],
