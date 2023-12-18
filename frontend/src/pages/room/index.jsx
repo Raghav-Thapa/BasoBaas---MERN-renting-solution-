@@ -6,7 +6,7 @@ import { Col, Container, Row, Carousel, Badge, Form, Button  } from "react-boots
 import { FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import "../../assets/css/room.css"
-// import { setCart, setCartAPI } from "../../reducer/room.reducer";
+import { setBooking, setBookingAPI } from "../../reducer/room.reducer";
 
 const RoomDetail = () => {
     const navigate = useNavigate();
@@ -41,7 +41,7 @@ const RoomDetail = () => {
         if(!loggedInuser){
             localStorage.setItem("redirect", '/room/'+detail.slug)
             toast.warn("Login first to stark booking")
-            navigate("/login")
+            navigate("/")
         }
         console.log(loggedInuser)
 
@@ -50,9 +50,9 @@ const RoomDetail = () => {
             // qty: Number(qty)
         }
 
-        // dispatch(setBooking(currentItem))
+        dispatch(setBooking(currentItem))
 
-        // dispatch(setBookingAPI(currentItem))
+        dispatch(setBookingAPI(currentItem))
 
         toast.success("Your room has been added in the cart.")
 

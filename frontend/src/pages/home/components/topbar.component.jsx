@@ -213,7 +213,7 @@ const Topbar = () => {
                                 <li><hr className="dropdown-divider" /></li>
 
                                 {isLoggedIn() && (
-                                        <Button className="btnstyle"  style={{ marginLeft: '-13px' }} label="My Bookings" /> 
+                                      <NavLink to= "/booking">  <Button className="btnstyle"  style={{ marginLeft: '-13px' }} label="My Bookings" /> </NavLink>
                                     )}
                                
                                 <li><hr className="dropdown-divider" /></li>

@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import RoomService from "../pages/room/room.service";
+import RoomService from "../pages/admin/room/room.service";
 
 
-export const setCartAPI = createAsyncThunk(
-    "Product/setCartAPI",
+export const setBookingAPI = createAsyncThunk(
+    "Room/setBookingAPI",
     async(data, thunkAPI) => {
         try {
-            let response = await cartService.sendToCart(data);
+            let response = await bookingService.sendToBooking(data);
             return response;
         } catch(exception) {
             throw exception
@@ -14,69 +14,69 @@ export const setCartAPI = createAsyncThunk(
     }
 );
 
-const ProductReducer = createSlice({
-    name: "Product",
+const RoomReducer = createSlice({
+    name: "Room",
     initialState: {
-        cart: []
+        booking: []
     },
     reducers: {
-        setItemInTheCart: (state, action) => {
-            let cart = JSON.parse(localStorage.getItem('cart')) ?? [];
-            state.cart = cart;
+        setItemInTheBooking: (state, action) => {
+            let booking = JSON.parse(localStorage.getItem('booking')) ?? [];
+            state.booking = booking;
         },
-        resetCart: (state, action) => {
-            localStorage.removeItem("cart")
-            state.cart = null;
+        resetBooking: (state, action) => {
+            localStorage.removeItem("booking")
+            state.booking = null;
             return;
         },
-        setCart: (state, action) => {
-            // action => {type:"Product/setCart", payload: {} | null | undefined}
-            let cart = JSON.parse(localStorage.getItem('cart')) ?? [];
+        setBooking: (state, action) => {
+            // action => {type:"Room/setBooking", payload: {} | null | undefined}
+            let booking = JSON.parse(localStorage.getItem('booking')) ?? [];
             
-            if(cart && cart.length){
+            if(booking && booking.length){
                 // Non empty in LS
-                // product => exists 
+                // room => exists 
                 // does not exists
                 let index = null
                
-                cart.map((cartItem, key) => {
-                    if(cartItem.productId === action.payload.productId) {
+                booking.map((bookingItem, key) => {
+                    if(bookingItem.roomId === action.payload.roomId) {
                         index = key;
                     }
                 })
 
                 if(index === null) {
                     // non exists 
-                    cart.push(action.payload)
+                    booking.push(action.payload)
                 } else {
                     // existing 
                     // current item=> qty
-                    // cart[index].qty = action.payload.qty;
+                    // booking[index].qty = action.payload.qty;
 
                     if(action.payload.qty <= 0){
-                        cart.splice(index, 1);
+                        booking.splice(index, 1);
                     } else {
-                        cart[index].qty = action.payload.qty;
+                        booking[index].qty = action.payload.qty;
                     }
                 }
             } else {
-                cart.push(action.payload)
+                booking.push(action.payload)
             }
 
-            localStorage.setItem('cart', JSON.stringify(cart));
-            state.cart = cart
+            localStorage.setItem('booking', JSON.stringify(booking));
+            state.booking = booking
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(setCartAPI.fulfilled, (state, action) => {
+        builder.addCase(setBookingAPI.fulfilled, (state, action) => {
             console.log("success", action.payload);
         })
-        builder.addCase(setCartAPI.rejected, (state, action) => {
+        builder.addCase(setBookingAPI.rejected, (state, action) => {
             console.log('reject', action.payload)
         })
     }
 })
 
-export const {setCart, setItemInTheCart, resetCart} = ProductReducer.actions
+export const {setBooking, setItemInTheBooking, resetBooking} = RoomReducer.actions
 
-export default ProductReducer.reducer;
+export default RoomReducer.reducer;

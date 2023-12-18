@@ -7,6 +7,7 @@ const cityRoutes = require("./city.routes")
 const categoryRoutes = require("./category.routes")
 const roomRoutes = require("./room.routes")
 const userRoutes = require("./user.routes")
+const bookingRoutes = require("./booking.routes")
 
 app.use("/auth",authRoutes);
 app.use("/banner",bannerRoutes);
@@ -14,6 +15,7 @@ app.use("/city",cityRoutes);
 app.use('/category',categoryRoutes)
 app.use("/room",roomRoutes);
 app.use('/user',userRoutes)
+app.use('/booking', bookingRoutes)
 
 
 module.exports = app;

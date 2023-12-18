@@ -9,6 +9,9 @@ const categoryCtrl = new CategoryController();
 const UserController = require('./user.controller')
 const userCtrl = new UserController();
 
+const BookingController = require('./booking.controller')
+const bookingCtrl = new BookingController();
+
 
 module.exports = {
     bannerCtrl,
@@ -16,4 +19,5 @@ module.exports = {
     roomCtrl,
     categoryCtrl,
     userCtrl,
+    bookingCtrl
 }

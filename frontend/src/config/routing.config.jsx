@@ -24,6 +24,8 @@ import { useEffect } from "react";
 import { getLoggedInUser } from "../reducer/user.reducer"
 import CityDetail from "../pages/city/city.page";
 import RoomDetail from "../pages/room";
+import { setItemInTheBooking } from "../reducer/room.reducer";
+import BookingDetail from "../pages/home/booking-detail.page";
 
 
 const Routing = () => {
@@ -31,7 +33,7 @@ const Routing = () => {
 
     useEffect(() => {
         dispatch(getLoggedInUser());
-        // dispatch(setItemInTheCart());
+        dispatch(setItemInTheBooking());
 
     }, [])
     return (<>
@@ -48,6 +50,8 @@ const Routing = () => {
                     <Route path="city/:slug/:childSlug" element={<CityDetail />} />
 
                     <Route path="room/:slug" element={<RoomDetail/>} />
+
+                    <Route path="booking" element={<BookingDetail />} ></Route>
 
                     <Route path="/activate/:token" element={<ActivateUser />} />
                     <Route path="*" element={<ErrorPage />}></Route>
