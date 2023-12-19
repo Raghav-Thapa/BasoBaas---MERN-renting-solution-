@@ -1,10 +1,10 @@
 const BookingModel = require("../models/booking.model");
 
 class BookingService {
-  addToBooking = (data) => {
+  addToBooking = async (data) => {
     try {
       let booking = new BookingModel(data);
-      return booking.save();
+      return await booking.save();
     } catch (exception) {
       throw exception;
     }
