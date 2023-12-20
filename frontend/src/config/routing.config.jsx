@@ -26,6 +26,11 @@ import CityDetail from "../pages/city/city.page";
 import RoomDetail from "../pages/room";
 import { setItemInTheBooking } from "../reducer/room.reducer";
 import BookingDetail from "../pages/home/booking-detail.page";
+import AboutUs from "../pages/home/components/about-us.page";
+import Blogs from "../pages/home/components/blogs.page";
+import RoomList from "../pages/home/components/room-list.component";
+import RecentDemands from "../pages/home/components/recent-demands.component";
+import ContactUs from "../pages/home/components/contact.page";
 
 
 const Routing = () => {
@@ -43,6 +48,22 @@ const Routing = () => {
                 <Route path="/" element={<HomePageLayout />}>
                     <Route index element={<HomePage />} />
 
+                    <Route path="about" element={<AboutUs />}></Route>
+
+                    <Route path="about" element={<AboutUs />}></Route>
+
+                    <Route path="blogs" element={<Blogs/>}></Route>
+
+                    <Route path="news" element={<Blogs/>}></Route>
+                    
+                    <Route path="privacy-policy" element={<Blogs/>}></Route>
+
+                    <Route path="terms-and-conditions" element={<Blogs/>}></Route>
+
+                    <Route path="contact" element={<ContactUs/>}></Route>
+
+                    <Route path="recentdemands" element={<RecentDemands/>}></Route>
+
                     <Route path="category/:slug" element={<CategoryDetail />} />
                     <Route path="category/:slug/:childSlug" element={<CategoryDetail />} />
 
@@ -55,6 +76,9 @@ const Routing = () => {
 
                     <Route path="/activate/:token" element={<ActivateUser />} />
                     <Route path="*" element={<ErrorPage />}></Route>
+
+                    <Route path="/customer" element={<CheckPermission accessBy={"customer"} Component={<HomePage/>} />}/>
+
 
                 </Route>
 
@@ -107,9 +131,7 @@ const Routing = () => {
                     Sellerroute
                 </Route>
 
-                <Route path="/customer" element={<CheckPermission accessBy={"customer"} Component={<>Customer Layout</>} />}>
-                    Customerroute
-                </Route>
+                <Route path="/customer" element={<CheckPermission accessBy={"customer"} Component={<>Customer Layout</>} />}/>
 
             </Routes>
             </BrowserRouter>
