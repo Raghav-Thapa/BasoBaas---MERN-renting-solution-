@@ -31,6 +31,8 @@ import Blogs from "../pages/home/components/blogs.page";
 import RoomList from "../pages/home/components/room-list.component";
 import RecentDemands from "../pages/home/components/recent-demands.component";
 import ContactUs from "../pages/home/components/contact.page";
+import SellerLayout from "../pages/layout/seller.layout";
+import SellerDashboard from "../pages/seller/dashboard.page";
 
 
 const Routing = () => {
@@ -127,9 +129,15 @@ const Routing = () => {
 
 
 
-                <Route path="/seller" element={<CheckPermission accessBy={"seller"} Component={<>Seller Layout</>} />}>
-                    Sellerroute
-                </Route>
+                <Route path="/seller" element={<CheckPermission accessBy={"seller"} Component={<SellerLayout />} />}>
+                    <Route index element={<SellerDashboard />} />
+                    
+                    <Route path="room" element={<><Outlet /></>}>
+                        <Route index element={<Room.RoomListPage/>} />
+                        <Route path="create" element={<Room.RoomCreateForm />} />
+                        <Route path=":id" element={<Room.RoomEditForm />} />
+                    </Route>
+                    </Route>
 
                 <Route path="/customer" element={<CheckPermission accessBy={"customer"} Component={<>Customer Layout</>} />}/>
 

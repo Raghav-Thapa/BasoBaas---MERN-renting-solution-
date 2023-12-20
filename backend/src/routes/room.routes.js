@@ -12,13 +12,13 @@ const uploadPath = (req,res,next) =>{
 router.get("/:slug/detail", roomCtrl.getRoomBySlug);
 
 router.route("/")
-    .get(authCheck, checkPermission('admin'), roomCtrl.listAllRooms)
-    .post(authCheck, checkPermission('admin'), uploadPath, uploader.array('images'),roomCtrl.storeRoom)
+    .get(authCheck, checkPermission(['admin', 'seller']), roomCtrl.listAllRooms)
+    .post(authCheck, checkPermission(['admin', 'seller']), uploadPath, uploader.array('images'),roomCtrl.storeRoom)
 
 router.route("/:id")
-    .put(authCheck, checkPermission('admin'), uploadPath, uploader.single('image'),roomCtrl.updateRoom)
-    .get(authCheck, checkPermission('admin'), roomCtrl.getRoomById)
-    .delete(authCheck, checkPermission('admin'),roomCtrl.deleteRoom)
+    .put(authCheck, checkPermission(['admin', 'seller']), uploadPath, uploader.single('image'),roomCtrl.updateRoom)
+    .get(authCheck, checkPermission(['admin', 'seller']), roomCtrl.getRoomById)
+    .delete(authCheck, checkPermission(['admin', 'seller']),roomCtrl.deleteRoom)
 
 router.get('/list/home', roomCtrl.getRoomForHomePage)
 
