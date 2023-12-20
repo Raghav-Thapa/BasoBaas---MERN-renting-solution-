@@ -7,14 +7,14 @@ import DataTable from 'react-data-table-component';
 import { useCallback, useEffect, useState } from "react";
 import customStyles from "../../../assets/css/table";
 import { toast } from "react-toastify";
-import room from "./";
+import sellerroom from ".";
 import { TableActionButtons } from "../../../components/table-action.component";
 
-const RoomListPage = () => {
+const SellerRoomListPage = () => {
     const handleDelete = async (id) => {
         try{
             setLoading(true)
-            let response = await room.roomSvc.deleteRoomById(id);
+            let response = await sellerroom.sellerroomSvc.deleteRoomById(id);
             if(response.status){
                 toast.success(response.msg)
                 await loadRooms()
@@ -68,7 +68,7 @@ const RoomListPage = () => {
 
     const loadRooms = useCallback(async(perPage=10, page=1) => {
         try{
-            let response = await room.roomSvc.listAllRooms(perPage, page);
+            let response = await sellerroom.sellerroomSvc.listAllRooms(perPage, page);
             if(response.status){
                 setRoomList(response.result)
                 setPagination(response.meta)
@@ -135,4 +135,4 @@ const RoomListPage = () => {
     </>)
 }
 
-export default RoomListPage;
+export default SellerRoomListPage;

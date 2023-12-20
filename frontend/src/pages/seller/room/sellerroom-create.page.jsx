@@ -1,17 +1,17 @@
 import { Container, Card, Breadcrumb, Row, Col } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import {FaArrowLeft} from "react-icons/fa";
-import room from ".";
+import sellerroom from ".";
 import { toast } from "react-toastify";
-import RoomForm from "./room-form.component";
+import SellerRoomForm from "./sellerroom-form.component";
 
-const RoomCreateForm = () => {
+const SellerRoomCreateForm = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async(values) => {
         try{
             // submit
-            const response = await room.roomSvc.createRoom(values)
+            const response = await sellerroom.sellerroomSvc.createRoom(values)
             toast.success(response.msg)
             navigate('/seller/room')
         } catch(error) {
@@ -43,7 +43,7 @@ const RoomCreateForm = () => {
 
             <Card className="mb-4">
                 <Card.Body>
-                    <RoomForm 
+                    <SellerRoomForm 
                         submitAction={handleSubmit}
                     />
                 </Card.Body>
@@ -52,4 +52,4 @@ const RoomCreateForm = () => {
     </>)
 }
 
-export default RoomCreateForm;
+export default SellerRoomCreateForm;

@@ -1,12 +1,12 @@
 import { Container, Card, Breadcrumb, Row, Col } from "react-bootstrap";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import {FaArrowLeft} from "react-icons/fa";
-import room from ".";
+import sellerroom from ".";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
-import RoomForm from "./room-form.component";
+import SellerRoomForm from "./sellerroom-form.component";
 
-const RoomEditForm = () => {
+const SellerRoomEditForm = () => {
     const navigate = useNavigate();
     const params = useParams()
 
@@ -18,7 +18,7 @@ const RoomEditForm = () => {
                 delete values.image
             }
 
-            const response = await room.roomSvc.updateRoom(values, params.id)
+            const response = await sellerroom.sellerroomSvc.updateRoom(values, params.id)
             toast.success(response.msg)
             navigate('/seller/room')
         } catch(error) {
@@ -29,7 +29,7 @@ const RoomEditForm = () => {
 
     const getRoomDetail = async () => {
         try {
-            let response = await room.roomSvc.getRoomById(params.id)
+            let response = await sellerroom.sellerroomSvc.getRoomById(params.id)
             setDetail(response.result);
         } catch(exception){
             toast.error("Room Cannot be fetched at this moment")
@@ -65,7 +65,7 @@ const RoomEditForm = () => {
 
             <Card className="mb-4">
                 <Card.Body>
-                    {detail && <RoomForm 
+                    {detail && <SellerRoomForm 
                         submitAction={handleSubmit}
                         detail={{
                             name: detail.name,
@@ -87,4 +87,4 @@ const RoomEditForm = () => {
     </>)
 }
 
-export default RoomEditForm;
+export default SellerRoomEditForm;

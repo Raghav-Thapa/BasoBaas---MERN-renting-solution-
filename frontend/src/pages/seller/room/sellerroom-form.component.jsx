@@ -7,12 +7,12 @@ import { useCallback, useEffect, useState } from "react";
 
 import Select from 'react-select'
 import { useSelector } from "react-redux";
-import category from "../category";
-import city from "../city";
-import user from "../user"
+// import category from "../../admin/category";
+// import city from "../../admin/city";
+// import user from "../../admin/user"
 
 
-const RoomForm = ({ submitAction, detail = null }) => {
+const SellerRoomForm = ({ submitAction, detail = null }) => {
 
   const [attributes, setAttributes] = useState();
   const [categories, setCategories] = useState();
@@ -431,4 +431,4 @@ const RoomForm = ({ submitAction, detail = null }) => {
   );
 };
 
-export default RoomForm;
+export default SellerRoomForm;

@@ -18,6 +18,7 @@ import City from "../pages/admin/city"
 import Category from "../pages/admin/category"
 import User from "../pages/admin/user"
 import Room from "../pages/admin/room"
+import SellerRoom from "../pages/seller/room"
 import { Outlet } from "react-router-dom"
 import {useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -89,7 +90,7 @@ const Routing = () => {
                 <Route path="/forget-password" element={<ForgetPage />} />
                 <Route path="/reset-password/:token" element={<ResetPage />} />
 
-                <Route path="/admin" element={<CheckPermission accessBy={"admin"} Component={<AdminLayout />} />}>
+                <Route path="/admin" element={<CheckPermission accessBy={["admin","seller"]} Component={<AdminLayout />} />}>
                     <Route index element={<AdminDashboard />} />
 
                     <Route path="banner" element={<><Outlet /></>}>
@@ -133,10 +134,17 @@ const Routing = () => {
                     <Route index element={<SellerDashboard />} />
                     
                     <Route path="room" element={<><Outlet /></>}>
-                        <Route index element={<Room.RoomListPage/>} />
-                        <Route path="create" element={<Room.RoomCreateForm />} />
-                        <Route path=":id" element={<Room.RoomEditForm />} />
+                        <Route index element={<SellerRoom.SellerRoomListPage/>} />
+                        <Route path="create" element={<SellerRoom.SellerRoomCreateForm />} />
+                        <Route path=":id" element={<SellerRoom.SellerRoomEditForm />} />
                     </Route>
+
+                    <Route path="category" element={<><Outlet /></>}>
+                        <Route index element={<Category.CategoryListPage/>} />
+                        <Route path="create" element={<Category.CategoryCreateForm />} />
+                        <Route path=":id" element={<Category.CategoryEditForm />} />
+                    </Route>
+
                     </Route>
 
                 <Route path="/customer" element={<CheckPermission accessBy={"customer"} Component={<>Customer Layout</>} />}/>

@@ -1,12 +1,12 @@
-import RoomCreateForm from "./room-create.page";
-import RoomEditForm from "./room-edit.page";
-import RoomService from "./room.service";
-import RoomListPage from "./room-list.page";
+import SellerRoomCreateForm from "./sellerroom-create.page";
+import SellerRoomEditForm from "./sellerroom-edit.page";
+import SellerRoomService from "./sellerroom.service";
+import SellerRoomListPage from "./sellerroom-list.page";
 
-const roomSvc= new RoomService()
+const sellerroomSvc= new SellerRoomService()
 export default {
-    RoomCreateForm,
-    roomSvc,
-    RoomListPage,
-    RoomEditForm,
+    SellerRoomCreateForm,
+    sellerroomSvc,
+    SellerRoomListPage,
+    SellerRoomEditForm,
 }

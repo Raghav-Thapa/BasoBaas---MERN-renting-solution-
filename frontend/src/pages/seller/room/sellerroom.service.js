@@ -1,6 +1,6 @@
 import HttpService from "../../../services/http.service"
 
-class RoomService extends HttpService {
+class SellerRoomService extends HttpService {
     // CRUD 
     createRoom =async (data) => {
         try {
@@ -59,4 +59,4 @@ class RoomService extends HttpService {
         }
     }
 }
-export default RoomService
+export default SellerRoomService

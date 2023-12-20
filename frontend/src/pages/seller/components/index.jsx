@@ -26,7 +26,7 @@ export const SellerTopNav = () => {
 
     return (<>
         <nav className="sb-topnav navbar navbar-expand navbar-light bg-light fixed-top">
-            <NavLink className="navbar-brand ps-3" to="/admin">Seller Pannel</NavLink>
+            <NavLink className="navbar-brand ps-3" to="/seller">Seller Pannel</NavLink>
             <button onClick={toggleSidebar} className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" to="#!"><i className="fas fa-bars"></i></button>
             <div className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 
@@ -81,7 +81,7 @@ export const SellerSidebar = () => {
                         <div className="sb-sidenav-menu-heading">Core Features</div>
 
             
-                        <NavLink className="nav-link" to="/admin/room">
+                        <NavLink className="nav-link" to="/seller/room">
                             <div className="sb-nav-link-icon">
                                 <i className="fas fa-person-shelter"></i>
                             </div>
