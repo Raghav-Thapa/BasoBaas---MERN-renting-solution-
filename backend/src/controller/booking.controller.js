@@ -61,8 +61,7 @@ class BookingController {
           roomName: book.name,
           roomImage: book.images[0],
           price: book.price,
-          qty: "",
-          amount: "",
+          city: book.city.name,
         };
         let qty = 0;
         let amt = 0;
@@ -76,7 +75,7 @@ class BookingController {
         singleItem.amount = amt;
         bookingDetail.push(singleItem);
       });
-
+      console.log(bookingDetail)
       res.json({
         result: bookingDetail,
         msg: "Booking Detail Fetched",

@@ -46,7 +46,7 @@ const BookingDetail = () => {
         try {
             let response = await bookingService.placeAnOrder(booking);
             if(response.status) {
-                toast.success("Thank you for using ecommerce. Your order has been placed successfully.")
+                toast.success("Thank you for using . Your order has been placed successfully.")
                 dispatch(resetBooking());
 
                   navigate('/order')
@@ -63,14 +63,15 @@ const BookingDetail = () => {
             <Row className="p-3">
                 <Col sm={12}>
 
-                    <table className="table table-sm table-bordered table-striped">
-                        <thead className="table-dark">
+                    <table className="table table-sm table-bordered table-striped ">
+                        <thead className="table-light">
                             <tr>
-                                <th>Product Name</th>
-                                <th>Product Image</th>
-                                <th>Product Price</th>
-                                <th>Product Qty</th>
-                                <th>Amount</th>
+                                <th>Title</th>
+                                <th>City</th>
+                                <th>Image</th>
+                                <th>Stated Price</th>
+                                <th>Remove</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -78,6 +79,7 @@ const BookingDetail = () => {
                                 bookingDetail && bookingDetail.map((bookingItem, key) =>(
                                     <tr key={key}>
                                         <th>{bookingItem.roomName}</th>
+                                        <th>{bookingItem.city}</th>
                                         <th>
                                             <img className="img img-fluid" 
                                                 src={import.meta.env.VITE_IMAGE_URL+'/rooms/'+bookingItem.roomImage}
@@ -86,40 +88,23 @@ const BookingDetail = () => {
                                         </th>
                                         <th>Npr. {bookingItem.price}</th>
                                         <th>
-                                            <Button style={{width:"30px", height:"30px"}} variant="secondary" size="sm" className="me-3" onClick={(e) => {
+                                            <Button style={{width:"30px", height:"30px"}} variant="danger" size="sm" className="me-3 ms-3" onClick={(e) => {
                                                 e.preventDefault();
                                                 dispatch(setBooking({
                                                     roomId: bookingItem.roomId,
                                                     qty: bookingItem.qty - 1
                                                 }))
                                             }}>
-                                                <FaMinus />
+                                               <i class="fa-solid fa-trash"></i>
                                             </Button>
-                                            {bookingItem.qty}
-                                            <Button  style={{width:"30px", height:"30px"}} variant="secondary" size="sm" className="mx-3" onClick={(e) => {
-                                                e.preventDefault();
-                                                dispatch(setBooking({
-                                                    roomId: bookingItem.roomId,
-                                                    qty: bookingItem.qty + 1
-                                                }))
-                                            }}>
-                                                <FaPlus />
-                                            </Button>
+                                            
                                         </th>
-                                        <th>Npr. {bookingItem.amount}</th>
                                     </tr>
                                 ))
                             }
                         </tbody>
                     </table>
                 </Col>
-            </Row>
-            <Row>
-           
-                <Col className="">
-                    <Button onClick={placeOrder} variant="warning" className="text-white float-end" size="sm">Place an Order</Button>
-                </Col>
-                  
             </Row>
             
         </Container>

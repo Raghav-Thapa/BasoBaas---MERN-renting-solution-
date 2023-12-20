@@ -40,21 +40,20 @@ const RoomDetail = () => {
         e.preventDefault();
         if(!loggedInuser){
             localStorage.setItem("redirect", '/room/'+detail.slug)
-            toast.warn("Login first to stark booking")
+            toast.warn("Login first to start booking")
             navigate("/")
         }
         console.log(loggedInuser)
 
         let currentItem = {
             roomId: detail._id,
-            // qty: Number(qty)
         }
 
         dispatch(setBooking(currentItem))
 
         dispatch(setBookingAPI(currentItem))
 
-        toast.success("Your room has been added in the cart.")
+        toast.success("You have requested for inquiry.")
 
     }
     return (<>
@@ -98,18 +97,6 @@ const RoomDetail = () => {
                                 }
                             </p>
                             <Row>
-                                {/* <Col sm="6">
-                                    <Form.Control
-                                        type="number"
-                                        name="qty"
-                                        onChange={(e) => {
-                                            setQty(e.target.value)
-                                        }}
-                                        required 
-                                        size="sm"
-                                        placeholder="Enter your quantity"
-                                    ></Form.Control>
-                                </Col> */}
                                 <Col sm={6}>
                                     <Button variant="success" className="text-white" size="sm" onClick={addToBooking}>
                                         
