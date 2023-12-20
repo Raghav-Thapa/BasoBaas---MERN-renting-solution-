@@ -14,6 +14,7 @@ class BookingController {
     try {
       let payload = req.body;
 
+
       let bookDetail = await this.bookSvc.getRoomById(payload.roomId);
       // let subtotal = bookDetail.afterDiscount * payload.qty;
       // let discount = payload.discount ?? 0;

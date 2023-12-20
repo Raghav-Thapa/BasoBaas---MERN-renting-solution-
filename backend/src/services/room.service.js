@@ -89,6 +89,7 @@ class RoomService {
             throw err
         }
     }
+    
 
     deleteRoomById = async(id) => {
         try{
